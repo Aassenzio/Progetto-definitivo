@@ -1,0 +1,15 @@
+# ninja log v5
+1	263	7356595777035329	src/CMakeFiles/ProgettoDefinitivo.dir/main.cpp.obj	2083807f4e5e968d
+1	292	7356612368978843	build.ninja	637c6b5576be93ed
+264	339	7356595777785325	src/ProgettoDefinitivo.exe	8183403ab3096c6f
+16	183	7356611657839091	src/CMakeFiles/ProgettoDefinitivo_lib.dir/main.cpp.obj	3a59e4f33e0a7e0
+2	466	7356612067865774	tst/CMakeFiles/ProgettoDefinitivo_tst.dir/test1.cpp.obj	267b9f47e58cb45c
+183	385	7356611659879083	src/libProgettoDefinitivo_lib.a	59ebeee10d61635c
+7	599	7356611661999079	tst/CMakeFiles/ProgettoDefinitivo_tst.dir/main.cpp.obj	2374ffdab0e23c29
+0	4312	7356611699029927	lib/GoogleTests/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	d9b40af1d5459226
+4313	6439	7356611720420458	lib/libgtest.a	5b5f91f15390171b
+466	2384	7356612087025701	tst/ProgettoDefinitivo_tst.exe	70be8255be6d07a6
+6	485	7356612546429271	tst/CMakeFiles/ProgettoDefinitivo_tst.dir/test2.cpp.obj	309a1bce2df0ed9a
+2	494	7356612546509271	tst/CMakeFiles/ProgettoDefinitivo_tst.dir/test1.cpp.obj	267b9f47e58cb45c
+2	468	7356612813591465	tst/CMakeFiles/ProgettoDefinitivo_tst.dir/test2.cpp.obj	309a1bce2df0ed9a
+468	2449	7356612833371388	tst/ProgettoDefinitivo_tst.exe	b4fa4893ea1725a0
