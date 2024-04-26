@@ -4,6 +4,7 @@ project(ProgettoDefinitivo)
 set(CMAKE_CXX_STANDARD 11)
 
 include_directories(src)
+include_directories(include)
 
 add_subdirectory(lib/GoogleTests)
 add_subdirectory(tst)

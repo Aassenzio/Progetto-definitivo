@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: D:/programmi igor/ProgettoDefinitivo/lib/GoogleTests
-# Build directory: D:/programmi igor/ProgettoDefinitivo/cmake-build-debug/lib/GoogleTests
+# Source directory: C:/Users/Igor/CLionProjects/Progetto-definitivo/lib/GoogleTests
+# Build directory: C:/Users/Igor/CLionProjects/Progetto-definitivo/cmake-build-debug/lib/GoogleTests
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
