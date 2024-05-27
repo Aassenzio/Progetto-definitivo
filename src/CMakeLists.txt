@@ -9,3 +9,5 @@ add_executable(${BINARY}_run ${SOURCES})
 add_executable(ProgettoDefinitivo main.cpp)
 
 add_library(${BINARY}_lib STATIC ${SOURCES})
+
+target_link_libraries(ProgettoDefinitivo ${wxWidgets_LIBRARIES})

@@ -6,6 +6,7 @@ set(SOURCES ${TEST_SOURCES})
 
 add_executable(${BINARY} ${TEST_SOURCES}
         test1.cpp
+        ../include/ora.h
 )
 
 add_test(NAME ${BINARY} COMMAND ${BINARY})

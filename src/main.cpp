@@ -1,8 +1,9 @@
 #include <iostream>
-#include "pippo.h"
+#include "ora.h"
+#include <wx/wx.h>
+
 int main(){
- int x(igor(10));
-    return 0;
+    std::cout<<"hello"<<std::endl;
 }
 // Created by Igor on 4/24/2024.
 //
