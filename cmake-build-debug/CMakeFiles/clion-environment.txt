@@ -1,5 +1,0 @@
-ToolSet: 5.0 (local)@C:\MinGW
-Ninja: 1.11.1@D:\programmi\CLion 2023.3.4\bin\ninja\win\x64\ninja.exe
-Options: 
-
-Options:-DCMAKE_MAKE_PROGRAM=D:/programmi/CLion 2023.3.4/bin/ninja/win/x64/ninja.exe
