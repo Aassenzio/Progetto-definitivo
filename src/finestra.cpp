@@ -15,13 +15,13 @@ wxArrayString listaMesi; //inizializza la lista dei mesi
     for(iterator=1; iterator<=12;iterator++) {
         listaMesi.Add(wxString::Format("%d", iterator));
     }
-    wxChoice* sceltaMese= new wxChoice(pannello, wxID_ANY, wxPoint(150,200), wxSize(-1, -1), listaMesi);
+    sceltaMese= new wxChoice(pannello, wxID_ANY, wxPoint(150,200), wxSize(-1, -1), listaMesi);
     sceltaMese->Select(0);
 
-    wxChoice* sceltaGiorno= new wxChoice(pannello, wxID_ANY, wxPoint(100,200), wxSize(-1, -1), listaGiorni);
+    sceltaGiorno= new wxChoice(pannello, wxID_ANY, wxPoint(100,200), wxSize(-1, -1), listaGiorni);
     sceltaGiorno->Select(0);
 
-    wxSpinCtrl* sceltaAnno= new wxSpinCtrl(pannello, wxID_ANY," ",wxPoint(200,200), wxSize(80, -1));
+    sceltaAnno= new wxSpinCtrl(pannello, wxID_ANY," ",wxPoint(200,200), wxSize(80, -1));
     sceltaAnno->SetRange(1900, 2100);
 
     wxButton* bottoneDiRicerca = new wxButton(pannello, wxID_ANY, "Cerca", wxPoint(480, 200),wxSize(-1, -1));
@@ -39,6 +39,10 @@ wxArrayString listaMesi; //inizializza la lista dei mesi
 };
 
     void MyFrame::OnButtonClick(wxCommandEvent& evt){
-        wxLogStatus("Ricerca Effettuata");
+        wxString giornoSelezionato = sceltaGiorno->GetString(sceltaGiorno->GetSelection());
+        wxString meseSelezionato = sceltaMese->GetString(sceltaMese->GetSelection());
+        int annoSelezionato = sceltaAnno->GetValue();
+        wxString messaggio = wxString::Format("Ricerca effettuata per: %s/%s/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
+        SetStatusText(messaggio);
     }
 
