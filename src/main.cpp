@@ -1,13 +1,20 @@
 #include <iostream>
 #include "orario.h"
 #include <wx/wx.h>
+#include "app.h"
+#include "finestra.h"
+#include "Data.h"
 
-int main(){
-    orario prova(14,34,52);
-    orario prova2(21,18,3);
-orario prova3=prova.durata(prova2);
-prova3.stampaOrario();
-
+wxIMPLEMENT_APP(App);
+bool::App::OnInit(){
+    MyFrame* myFrame =new MyFrame("Registro Attivita");
+    myFrame->SetClientSize(800, 600);
+    myFrame->Center();
+    myFrame->Show();
+    return true;
 }
+/*int main(){
+
+}*/
 // Created by Igor on 4/24/2024.
 //

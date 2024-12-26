@@ -7,6 +7,9 @@ set(SOURCES ${TEST_SOURCES})
 add_executable(${BINARY} ${TEST_SOURCES}
         test1.cpp
         ../include/orario.h
+        ../include/finestra.h
+        ../include/app.h
+        ../include/Data.h
 )
 
 add_test(NAME ${BINARY} COMMAND ${BINARY})

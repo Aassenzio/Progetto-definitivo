@@ -8,6 +8,9 @@ add_executable(${BINARY}_run ${SOURCES})
 
 add_executable(ProgettoDefinitivo main.cpp
         orario.cpp
+        finestra.cpp
+        app.cpp
+        data.cpp
 )
 
 add_library(${BINARY}_lib STATIC ${SOURCES})
