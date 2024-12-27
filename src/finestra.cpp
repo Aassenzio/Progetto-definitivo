@@ -1,6 +1,7 @@
 #include "finestra.h"
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
+#include "Utility.h"
 
 MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
     wxPanel* pannello = new wxPanel(this);
@@ -49,19 +50,13 @@ void MyFrame::OnButtonClick(wxCommandEvent& evt){
     wxString messaggio = wxString::Format("Ricerca effettuata per: %d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
     SetStatusText(messaggio);
     }
-    //funzione che controlla se anno bisestile
-bool MyFrame::IsBisestile(){
-    int annoSelezionato = sceltaAnno->GetValue();
-    if (annoSelezionato % 4 ==0 && annoSelezionato % 100 != 0)
-        return true;
-        else return false;
-}
 
 void MyFrame::OnModificaMese(wxCommandEvent& evt){
     int meseSelezionato = sceltaMese->GetValue();
+    int annoSelezionato = sceltaAnno->GetValue();
     switch(meseSelezionato) {
         case 2:
-        if (MyFrame::IsBisestile())
+        if (IsBisestile(annoSelezionato))
             sceltaGiorno->SetRange(1, 29);
         else
             sceltaGiorno->SetRange(1, 28);

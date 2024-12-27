@@ -10,6 +10,7 @@ add_executable(${BINARY} ${TEST_SOURCES}
         ../include/finestra.h
         ../include/app.h
         ../include/Data.h
+        ../include/Utility.h
 )
 
 add_test(NAME ${BINARY} COMMAND ${BINARY})

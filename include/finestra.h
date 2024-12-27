@@ -12,6 +12,5 @@ private:
     wxSpinCtrl* sceltaGiorno;
     wxSpinCtrl* sceltaMese;
     wxSpinCtrl* sceltaAnno;
-    bool IsBisestile();
 };
 #endif //PROGETTODEFINITIVO_FINESTRA_H
