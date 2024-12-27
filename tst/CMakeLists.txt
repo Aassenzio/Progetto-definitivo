@@ -11,6 +11,7 @@ add_executable(${BINARY} ${TEST_SOURCES}
         ../include/app.h
         ../include/Data.h
         ../include/Utility.h
+
 )
 
 add_test(NAME ${BINARY} COMMAND ${BINARY})

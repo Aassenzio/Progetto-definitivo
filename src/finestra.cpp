@@ -7,15 +7,6 @@ MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
     wxPanel* pannello = new wxPanel(this);
     wxStaticText* testoDiBenvenuto= new wxStaticText(pannello, wxID_ANY, "Scegli il giorno di cui vuoi visualizzare le attivita",
                                                      wxPoint(100,150), wxSize(-1,-1));
-    wxArrayString listaGiorni; //inizializza la lista dei giorni
-    int iterator;
-    for(iterator=1; iterator<=31;iterator++) {
-        listaGiorni.Add(wxString::Format("%d", iterator));
-    }
-    wxArrayString listaMesi; //inizializza la lista dei mesi
-    for(iterator=1; iterator<=12;iterator++) {
-        listaMesi.Add(wxString::Format("%d", iterator));
-    }
     sceltaMese= new wxSpinCtrl(pannello, wxID_ANY,"", wxPoint(150,200), wxSize(-1, -1));
     sceltaMese->SetRange(1,12);
 
@@ -38,9 +29,9 @@ MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
     wxStaticText* testoSopraAnno = new wxStaticText(pannello, wxID_ANY, "Anno",
                                                     wxPoint(200,180), wxSize(-1,-1));
     //inserisco evento per cambio anno
-    sceltaAnno->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaMese, this);
-    sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaMese, this);
-    sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaMese, this);
+    sceltaAnno->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
+    sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
+    sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
 };
 
 void MyFrame::OnButtonClick(wxCommandEvent& evt){
@@ -51,7 +42,7 @@ void MyFrame::OnButtonClick(wxCommandEvent& evt){
     SetStatusText(messaggio);
     }
 
-void MyFrame::OnModificaMese(wxCommandEvent& evt){
+void MyFrame::OnModificaData(wxCommandEvent& evt){
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
     switch(meseSelezionato) {

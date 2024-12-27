@@ -11,6 +11,7 @@ add_executable(ProgettoDefinitivo main.cpp
         finestra.cpp
         app.cpp
         data.cpp
+        Utility.cpp
 )
 
 add_library(${BINARY}_lib STATIC ${SOURCES})
