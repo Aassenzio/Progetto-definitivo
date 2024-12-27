@@ -8,7 +8,6 @@ public:
     MyFrame(const wxString &title);
 private:
     void OnButtonClick(wxCommandEvent& evt);
-    void OnModificaAnno(wxCommandEvent& evt);
     void OnModificaMese(wxCommandEvent& evt);
     wxSpinCtrl* sceltaGiorno;
     wxSpinCtrl* sceltaMese;

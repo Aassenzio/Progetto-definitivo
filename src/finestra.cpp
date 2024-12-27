@@ -56,11 +56,6 @@ bool MyFrame::IsBisestile(){
         return true;
         else return false;
 }
-void MyFrame::OnModificaAnno(wxCommandEvent& evt){
-    int meseSelezionato = sceltaMese->GetValue();
-    if(MyFrame::IsBisestile() && meseSelezionato == 2)
-            sceltaGiorno->SetRange(1, 29);
-}
 
 void MyFrame::OnModificaMese(wxCommandEvent& evt){
     int meseSelezionato = sceltaMese->GetValue();
