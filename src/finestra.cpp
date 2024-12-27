@@ -35,7 +35,10 @@ MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
 };
 
 void MyFrame::OnButtonClick(wxCommandEvent& evt){
-    int giornoSelezionato = sceltaGiorno->GetValue();
+    std::string eskere ="Proviamo questa idea";
+    wxStaticText* testoDiProva = new wxStaticText(this, wxID_ANY, eskere,
+                                                  wxPoint(100,300), wxSize(-1, -1));
+    int giornoSelezionato = sceltaGiorno->GetValue();// Prende i valori per compattare la data
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
     wxString messaggio = wxString::Format("Ricerca effettuata per: %d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
