@@ -9,7 +9,9 @@ class orario
     public:
             orario(int oraInserita, int minutoInserito, int secondoInserito=0):
             ore(oraInserita), minuti(minutoInserito), secondi(secondoInserito){};
+
             void stampaOrario();
+
             orario durata(const orario&)const;
     private:
             int ore;

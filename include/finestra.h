@@ -7,10 +7,13 @@ class MyFrame:public wxFrame {
 public:
     MyFrame(const wxString &title);
 private:
-    void OnButtonClick(wxCommandEvent& evt);
+    void OnButtonSearchClick(wxCommandEvent& evt);
     void OnModificaData(wxCommandEvent& evt);
+    void OnButtonSaveClick(wxCommandEvent& evt);
     wxSpinCtrl* sceltaGiorno;
     wxSpinCtrl* sceltaMese;
     wxSpinCtrl* sceltaAnno;
+    wxTextCtrl* testoDiProva;
+    wxPanel* pannello;
 };
 #endif //PROGETTODEFINITIVO_FINESTRA_H

@@ -2,9 +2,11 @@
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
 #include "Utility.h"
+#include <wx/file.h>
 
 MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
-    wxPanel* pannello = new wxPanel(this);
+    pannello = new wxPanel(this);
+    testoDiProva = nullptr;
     wxStaticText* testoDiBenvenuto= new wxStaticText(pannello, wxID_ANY, "Scegli il giorno di cui vuoi visualizzare le attivita",
                                                      wxPoint(100,150), wxSize(-1,-1));
     sceltaMese= new wxSpinCtrl(pannello, wxID_ANY,"", wxPoint(150,200), wxSize(-1, -1));
@@ -20,7 +22,7 @@ MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
 
     CreateStatusBar();
 
-    bottoneDiRicerca->Bind(wxEVT_BUTTON, &MyFrame::OnButtonClick, this);
+    bottoneDiRicerca->Bind(wxEVT_BUTTON, &MyFrame::OnButtonSearchClick, this);
 
     wxStaticText* testoSopraMese = new wxStaticText(pannello, wxID_ANY, "Mese",
                                                     wxPoint(150,180), wxSize(-1,-1));
@@ -33,18 +35,34 @@ MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
     sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
     sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
 };
-
-void MyFrame::OnButtonClick(wxCommandEvent& evt){
-    std::string eskere ="Proviamo questa idea";
-    wxStaticText* testoDiProva = new wxStaticText(this, wxID_ANY, eskere,
-                                                  wxPoint(100,300), wxSize(-1, -1));
+//bottone che cerca il giorno
+void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
+    if(!testoDiProva) {
+        testoDiProva = new wxTextCtrl(pannello, wxID_ANY, "Testo editabile",
+                                      wxPoint(100, 300), wxSize(-1, -1));
+        wxButton* bottoneSalva = new wxButton(pannello, wxID_ANY, "Salva", wxPoint(200, 300), wxSize(-1, -1));
+        bottoneSalva->Bind(wxEVT_BUTTON, &MyFrame::OnButtonSaveClick, this);
+    }
     int giornoSelezionato = sceltaGiorno->GetValue();// Prende i valori per compattare la data
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
     wxString messaggio = wxString::Format("Ricerca effettuata per: %d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
     SetStatusText(messaggio);
     }
-
+//bottone che salva il contenuto della casella di testo
+void MyFrame::OnButtonSaveClick(wxCommandEvent& evt){
+    if(testoDiProva) {
+        wxString contenutoCasellaTesto = testoDiProva->GetValue();
+        wxFile file("output.txt", wxFile::write);
+        if (file.IsOpened()) {
+            file.Write(contenutoCasellaTesto);
+            file.Close();
+            wxLogMessage("Testo salvato su file.");
+        } else {
+            wxLogError("Impossibile aprire il file per la scrittura.");
+        }
+    }
+}
 void MyFrame::OnModificaData(wxCommandEvent& evt){
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
