@@ -8,8 +8,11 @@ public:
     MyFrame(const wxString &title);
 private:
     void OnButtonClick(wxCommandEvent& evt);
-    wxChoice* sceltaGiorno;
-    wxChoice* sceltaMese;
+    void OnModificaAnno(wxCommandEvent& evt);
+    void OnModificaMese(wxCommandEvent& evt);
+    wxSpinCtrl* sceltaGiorno;
+    wxSpinCtrl* sceltaMese;
     wxSpinCtrl* sceltaAnno;
+    bool IsBisestile();
 };
 #endif //PROGETTODEFINITIVO_FINESTRA_H
