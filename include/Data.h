@@ -4,6 +4,7 @@
 #include "Attivita.h"
 class Data{
 public:
+    Data(int);
     Data(int giorno, int mese, int anno);
     void ShowListaAttivita();
 private:

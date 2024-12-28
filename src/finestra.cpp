@@ -1,11 +1,13 @@
+
 #include "finestra.h"
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
-#include "Utility.h"
+
 #include <wx/file.h>
 
 MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
     pannello = new wxPanel(this);
+    registroAttivita = new Registro;
     wxStaticText* testoDiBenvenuto= new wxStaticText(pannello, wxID_ANY, "Scegli il giorno di cui vuoi visualizzare le attivita",
                                                      wxPoint(100,150), wxSize(-1,-1));
     sceltaMese= new wxSpinCtrl(pannello, wxID_ANY,"", wxPoint(150,200), wxSize(-1, -1));
@@ -34,19 +36,23 @@ MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
     sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
     sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
 };
-//bottone che cerca il giorno
+//funzione del bottone che cerca il giorno
 void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
-    if(!listBoxDiProva) {
-        wxArrayString scelte;
-        scelte.Add("item 1");
-        scelte.Add("item 2");
-        listBoxDiProva = new wxListBox(pannello, wxID_ANY, wxPoint(100, 300), wxSize(-1, -1), scelte);
-        wxButton* bottoneSalva = new wxButton(pannello, wxID_ANY, "Salva", wxPoint(200, 300), wxSize(-1, -1));
-        bottoneSalva->Bind(wxEVT_BUTTON, &MyFrame::OnButtonSaveClick, this);
-    }
     int giornoSelezionato = sceltaGiorno->GetValue();// Prende i valori per compattare la data
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
+    int dataEstesaSelezionata = CompattaData(annoSelezionato, meseSelezionato, giornoSelezionato);
+    registroAttivita->searchDate(dataEstesaSelezionata); //cerco nel registro il giorno corrispondente
+    wxString dataEstesaStringa = wxString::Format("%d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
+    wxStaticText* dataSopraAttivita = new wxStaticText(pannello, wxID_ANY, dataEstesaStringa,
+                                                       wxPoint(100, 275), wxSize (-1,-1));
+        wxArrayString scelte;
+        scelte.Add("Aggiungi Nuova Attivita'");
+        scelte.Add("item 2");
+        listBoxDiProva = new wxListBox(pannello, wxID_ANY, wxPoint(100, 300), wxSize(-1, -1), scelte);
+        wxButton* bottoneSalva = new wxButton(pannello, wxID_ANY, "Modifica", wxPoint(400, 300), wxSize(-1, -1));
+        bottoneSalva->Bind(wxEVT_BUTTON, &MyFrame::OnButtonSaveClick, this);
+
     wxString messaggio = wxString::Format("Ricerca effettuata per: %d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
     SetStatusText(messaggio);
     }
