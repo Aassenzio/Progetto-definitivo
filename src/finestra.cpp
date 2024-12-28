@@ -48,18 +48,33 @@ void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
     wxString dataEstesaStringa = wxString::Format("%d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
     wxStaticText* dataSopraAttivita = new wxStaticText(pannello, wxID_ANY, dataEstesaStringa,
                                                        wxPoint(100, 275), wxSize (-1,-1));
-
-        scelte.Add("item 2");
+    if(!listBoxDiProva) {
         listBoxDiProva = new wxListBox(pannello, wxID_ANY, wxPoint(100, 300), wxSize(-1, -1), scelte);
-        wxButton* bottoneSalva = new wxButton(pannello, wxID_ANY, "Modifica", wxPoint(400, 300), wxSize(-1, -1));
-        bottoneSalva->Bind(wxEVT_BUTTON, &MyFrame::OnButtonSaveClick, this);
+    }else {
+        delete listBoxDiProva;
+        listBoxDiProva = new wxListBox(pannello, wxID_ANY, wxPoint(100, 300), wxSize(-1, -1), scelte);
+    }
+    if(!bottoneModifica) {
+        bottoneModifica = new wxButton(pannello, wxID_ANY, "Modifica", wxPoint(400, 300), wxSize(-1, -1));
+    }else{
+        delete bottoneModifica;
+        bottoneModifica = new wxButton(pannello, wxID_ANY, "Modifica", wxPoint(400, 300), wxSize(-1, -1));
+    }
+    bottoneModifica->Bind(wxEVT_BUTTON, &MyFrame::OnButtonSaveClick, this);
 
     wxString messaggio = wxString::Format("Ricerca effettuata per: %d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
     SetStatusText(messaggio);
     }
 //bottone che salva il contenuto della casella di testo
 void MyFrame::OnButtonSaveClick(wxCommandEvent& evt){
-        wxString contenutoCasellaTesto = "Funziona ";
+
+    if(!nomeAttivita) {
+        nomeAttivita = new wxTextCtrl(pannello, wxID_ANY, "NOME", wxPoint(400, 400), wxSize(200, 30));
+    }else {
+        delete nomeAttivita;
+        nomeAttivita = new wxTextCtrl(pannello, wxID_ANY, "NOME", wxPoint(400, 400), wxSize(200, 30));
+    }
+     /*   wxString contenutoCasellaTesto = "Funziona ";
         wxFile file("output.txt", wxFile::write);
         if (file.IsOpened()) {
             file.Write(contenutoCasellaTesto);
@@ -67,7 +82,7 @@ void MyFrame::OnButtonSaveClick(wxCommandEvent& evt){
             wxLogMessage("Testo salvato su file.");
         } else {
             wxLogError("Impossibile aprire il file per la scrittura.");
-        }
+        }*/
     }
 
 void MyFrame::OnModificaData(wxCommandEvent& evt){

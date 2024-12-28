@@ -13,6 +13,7 @@ add_executable(${BINARY} ${TEST_SOURCES}
         ../include/Utility.h
         ../include/Attivita.h
         ../include/Registro.h
+        ../include/FinestraDiModifica.h
 
 )
 
