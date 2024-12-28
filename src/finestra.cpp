@@ -37,13 +37,17 @@ MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
     sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
 };
 //funzione del bottone che cerca il giorno
+Registro* MyFrame::GetRegisterAddress() {
+    return registroAttivita;
+};
 void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
     int giornoSelezionato = sceltaGiorno->GetValue();// Prende i valori per compattare la data
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
-    wxArrayString scelte; //array che contiene i nomi delle attivita
-    //scelte.Insert("Aggiungi Nuova Attivita'",0);
     int dataEstesaSelezionata = CompattaData(annoSelezionato, meseSelezionato, giornoSelezionato);
+   /* wxArrayString scelte; //array che contiene i nomi delle attivita
+    //scelte.Insert("Aggiungi Nuova Attivita'",0);
+
     registroAttivita->searchDate(dataEstesaSelezionata, &scelte, dataCorrente); //cerco nel registro il giorno corrispondente
     wxString dataEstesaStringa = wxString::Format("%d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
     wxStaticText* dataSopraAttivita = new wxStaticText(pannello, wxID_ANY, dataEstesaStringa,
@@ -64,6 +68,11 @@ void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
 
     wxString messaggio = wxString::Format("Ricerca effettuata per: %d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
     SetStatusText(messaggio);
+    */
+    FrameSecondario* secondaFinestra =new FrameSecondario("Finestra Secondaria", registroAttivita, dataEstesaSelezionata);
+    secondaFinestra->SetClientSize(800, 600);
+    secondaFinestra->Center();
+    secondaFinestra->Show();
     }
 //bottone che salva il contenuto della casella di testo
 void MyFrame::OnButtonSaveClick(wxCommandEvent& evt){

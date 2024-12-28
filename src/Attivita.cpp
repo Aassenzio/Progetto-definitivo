@@ -2,15 +2,18 @@
 
 Attivita::Attivita(wxString nuovoNome): nome(nuovoNome){};
 
-void Attivita::AggiungiDescrizione(std::string nuovaDescrizione) {
+/*void Attivita::AggiungiDescrizione(std::string nuovaDescrizione) {
     descrizione = nuovaDescrizione;
-}
+}*/
 
 void Attivita::AggiungiNome(wxString nuovoNome) {
     nome = nuovoNome;
 }
 wxString Attivita::MostraNome() {
     return nome;
+}
+int Attivita::MostraData() {
+    return data;
 }
 /*
 void Attivita::AggiungiOrario(orario inizio, orario fine) {

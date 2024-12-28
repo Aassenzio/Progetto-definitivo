@@ -18,10 +18,13 @@ public:
     void AggiungiOrario(orario , orario);
 
     void ShowAttivita(wxArrayString* arrayDeiNomi);
+
+    int MostraData();
 private:
     //orario oraInizio;
    // orario oraFine;
-    std::string descrizione;
+   // std::string descrizione;
     wxString nome;
+    int data;
 };
 #endif //PROGETTODEFINITIVO_ATTIVITA_H

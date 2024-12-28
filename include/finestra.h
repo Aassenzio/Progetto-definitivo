@@ -6,9 +6,11 @@
 #include "Utility.h"
 #include "Registro.h"
 #include "FinestraDiModifica.h"
+
 class MyFrame:public wxFrame {
 public:
     MyFrame(const wxString &title);
+    Registro* GetRegisterAddress();
 private:
     Registro* registroAttivita;
     void OnButtonSearchClick(wxCommandEvent& evt);

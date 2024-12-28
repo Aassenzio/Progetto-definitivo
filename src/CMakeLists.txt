@@ -15,6 +15,7 @@ add_executable(ProgettoDefinitivo main.cpp
         Attivita.cpp
         Registro.cpp
         FinestraDiModifica.cpp
+        FinestraDiAggiunta.cpp
 )
 
 add_library(${BINARY}_lib STATIC ${SOURCES})

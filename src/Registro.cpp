@@ -1,14 +1,17 @@
 #include "Registro.h"
-
-void Registro::searchDate(int dataCercata, wxArrayString* arrayDeiNomi, Data*& dataCorrente){
-    auto iter = mappaData.find(dataCercata);
-    if(iter == mappaData.end()){
-        Data dataAggiunta= Data(dataCercata);
-        mappaData.insert(std::make_pair(dataCercata, dataAggiunta));
-        dataCorrente = &dataAggiunta;
-        dataCorrente->ShowListaAttivita(arrayDeiNomi);
-    }else{dataCorrente = &iter->second;
-        iter->second.ShowListaAttivita(arrayDeiNomi);
+void Registro::searchDate(int dataCercata, wxListCtrl* listaDiQualcosa){
+    for(int iter = 0; iter < contatoreAssoluto; iter++) {
+        if (vettoreAttivita[iter].MostraData() == dataCercata){
+            listaDiQualcosa->InsertItem(iter , vettoreAttivita[iter].MostraNome());
+        }
     }
+}
 
+int Registro::GetAbsCounter() {
+    return contatoreAssoluto;
+}
+
+void Registro::AddAttivita(wxString nomeAttivita) {
+    vettoreAttivita.push_back(Attivita(nomeAttivita));
+    contatoreAssoluto++;
 }
