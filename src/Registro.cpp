@@ -6,6 +6,7 @@ void Registro::searchDate(int dataCercata, wxArrayString* arrayDeiNomi, Data*& d
         Data dataAggiunta= Data(dataCercata);
         mappaData.insert(std::make_pair(dataCercata, dataAggiunta));
         dataCorrente = &dataAggiunta;
+        dataCorrente->ShowListaAttivita(arrayDeiNomi);
     }else{dataCorrente = &iter->second;
         iter->second.ShowListaAttivita(arrayDeiNomi);
     }

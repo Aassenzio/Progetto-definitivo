@@ -42,7 +42,7 @@ void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
     wxArrayString scelte; //array che contiene i nomi delle attivita
-    scelte.Insert("Aggiungi Nuova Attivita'",0);
+    //scelte.Insert("Aggiungi Nuova Attivita'",0);
     int dataEstesaSelezionata = CompattaData(annoSelezionato, meseSelezionato, giornoSelezionato);
     registroAttivita->searchDate(dataEstesaSelezionata, &scelte, dataCorrente); //cerco nel registro il giorno corrispondente
     wxString dataEstesaStringa = wxString::Format("%d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
