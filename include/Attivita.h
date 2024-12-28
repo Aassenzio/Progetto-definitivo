@@ -7,6 +7,11 @@
 class Attivita{
 public:
     void AggiungiDescrizione(std::string);
+
+    void AggiungiNome(std::string);
+
+    void AggiungiOrario(orario , orario);
+
     void ShowAttivita();
 private:
     orario oraInizio;

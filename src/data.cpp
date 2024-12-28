@@ -10,4 +10,5 @@ void Data::ShowListaAttivita() {
         iter->ShowAttivita();
 
     }
+    std::cout<<"Fine lista";
 }

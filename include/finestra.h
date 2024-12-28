@@ -13,7 +13,7 @@ private:
     wxSpinCtrl* sceltaGiorno;
     wxSpinCtrl* sceltaMese;
     wxSpinCtrl* sceltaAnno;
-    wxTextCtrl* testoDiProva;
+    wxListBox* listBoxDiProva;
     wxPanel* pannello;
 };
 #endif //PROGETTODEFINITIVO_FINESTRA_H

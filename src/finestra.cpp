@@ -6,7 +6,6 @@
 
 MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
     pannello = new wxPanel(this);
-    testoDiProva = nullptr;
     wxStaticText* testoDiBenvenuto= new wxStaticText(pannello, wxID_ANY, "Scegli il giorno di cui vuoi visualizzare le attivita",
                                                      wxPoint(100,150), wxSize(-1,-1));
     sceltaMese= new wxSpinCtrl(pannello, wxID_ANY,"", wxPoint(150,200), wxSize(-1, -1));
@@ -37,9 +36,11 @@ MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
 };
 //bottone che cerca il giorno
 void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
-    if(!testoDiProva) {
-        testoDiProva = new wxTextCtrl(pannello, wxID_ANY, "Testo editabile",
-                                      wxPoint(100, 300), wxSize(-1, -1));
+    if(!listBoxDiProva) {
+        wxArrayString scelte;
+        scelte.Add("item 1");
+        scelte.Add("item 2");
+        listBoxDiProva = new wxListBox(pannello, wxID_ANY, wxPoint(100, 300), wxSize(-1, -1), scelte);
         wxButton* bottoneSalva = new wxButton(pannello, wxID_ANY, "Salva", wxPoint(200, 300), wxSize(-1, -1));
         bottoneSalva->Bind(wxEVT_BUTTON, &MyFrame::OnButtonSaveClick, this);
     }
@@ -51,8 +52,7 @@ void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
     }
 //bottone che salva il contenuto della casella di testo
 void MyFrame::OnButtonSaveClick(wxCommandEvent& evt){
-    if(testoDiProva) {
-        wxString contenutoCasellaTesto = testoDiProva->GetValue();
+        wxString contenutoCasellaTesto = "Funziona ";
         wxFile file("output.txt", wxFile::write);
         if (file.IsOpened()) {
             file.Write(contenutoCasellaTesto);
@@ -62,7 +62,7 @@ void MyFrame::OnButtonSaveClick(wxCommandEvent& evt){
             wxLogError("Impossibile aprire il file per la scrittura.");
         }
     }
-}
+
 void MyFrame::OnModificaData(wxCommandEvent& evt){
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
