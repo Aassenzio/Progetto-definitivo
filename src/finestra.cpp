@@ -41,13 +41,14 @@ void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
     int giornoSelezionato = sceltaGiorno->GetValue();// Prende i valori per compattare la data
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
+    wxArrayString scelte; //array che contiene i nomi delle attivita
+    scelte.Add("Aggiungi Nuova Attivita'");
     int dataEstesaSelezionata = CompattaData(annoSelezionato, meseSelezionato, giornoSelezionato);
-    registroAttivita->searchDate(dataEstesaSelezionata); //cerco nel registro il giorno corrispondente
+    registroAttivita->searchDate(dataEstesaSelezionata, &scelte); //cerco nel registro il giorno corrispondente
     wxString dataEstesaStringa = wxString::Format("%d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
     wxStaticText* dataSopraAttivita = new wxStaticText(pannello, wxID_ANY, dataEstesaStringa,
                                                        wxPoint(100, 275), wxSize (-1,-1));
-        wxArrayString scelte;
-        scelte.Add("Aggiungi Nuova Attivita'");
+
         scelte.Add("item 2");
         listBoxDiProva = new wxListBox(pannello, wxID_ANY, wxPoint(100, 300), wxSize(-1, -1), scelte);
         wxButton* bottoneSalva = new wxButton(pannello, wxID_ANY, "Modifica", wxPoint(400, 300), wxSize(-1, -1));

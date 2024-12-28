@@ -1,12 +1,13 @@
 #ifndef PROGETTODEFINITIVO_DATA_H
 #define PROGETTODEFINITIVO_DATA_H
 #include<list>
+#include <wx/wx.h>
 #include "Attivita.h"
 class Data{
 public:
     Data(int);
     Data(int giorno, int mese, int anno);
-    void ShowListaAttivita();
+    void ShowListaAttivita(wxArrayString* arrayDeiNomi);
 private:
     int _giorno;
     int _mese;

@@ -12,6 +12,6 @@ void Attivita::AggiungiOrario(orario inizio, orario fine) {
     oraInizio = inizio;
     oraFine = fine;
 }
-void Attivita::ShowAttivita() {
-    std::cout<< nome << std::endl;
+void Attivita::ShowAttivita(wxArrayString* arrayDeiNomi) {
+    arrayDeiNomi->Add(nome);
 }

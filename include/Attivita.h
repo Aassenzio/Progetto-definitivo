@@ -4,6 +4,7 @@
 #include "orario.h"
 #include <iostream>
 #include <string>
+#include <wx/wx.h>
 class Attivita{
 public:
     void AggiungiDescrizione(std::string);
@@ -12,11 +13,11 @@ public:
 
     void AggiungiOrario(orario , orario);
 
-    void ShowAttivita();
+    void ShowAttivita(wxArrayString* arrayDeiNomi);
 private:
     orario oraInizio;
     orario oraFine;
     std::string descrizione;
-    std::string nome;
+    wxString nome;
 };
 #endif //PROGETTODEFINITIVO_ATTIVITA_H
