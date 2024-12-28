@@ -13,6 +13,7 @@ add_executable(ProgettoDefinitivo main.cpp
         data.cpp
         Utility.cpp
         Attivita.cpp
+        Registro.cpp
 )
 
 add_library(${BINARY}_lib STATIC ${SOURCES})
