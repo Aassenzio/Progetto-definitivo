@@ -42,7 +42,7 @@ void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
     wxArrayString scelte; //array che contiene i nomi delle attivita
-    //scelte.Add("Aggiungi Nuova Attivita'");
+    scelte.Insert("Aggiungi Nuova Attivita'",0);
     int dataEstesaSelezionata = CompattaData(annoSelezionato, meseSelezionato, giornoSelezionato);
     registroAttivita->searchDate(dataEstesaSelezionata, &scelte, dataCorrente); //cerco nel registro il giorno corrispondente
     wxString dataEstesaStringa = wxString::Format("%d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
@@ -91,9 +91,13 @@ void MyFrame::OnButtonSaveClick(wxCommandEvent& evt){
     }
     //prende il nome nella casella di testo e aggiorna l attivita
 void MyFrame::OnButtonApplyClick(wxCommandEvent &evt) {
+        wxString nomeAttuale  = listBoxDiProva->GetString(listBoxDiProva->GetSelection());
+        wxString nomeNellCasella = nomeAttivita->GetLineText(0);
     if(listBoxDiProva->GetSelection() == 0) {
-        wxString nomeModificato = nomeAttivita->GetLineText(0);
-        dataCorrente->AddAttivita(Attivita(nomeModificato));
+        dataCorrente->AddAttivita(Attivita(nomeNellCasella));
+    }else {
+        dataCorrente->EditAttivita(nomeAttuale , nomeNellCasella);
+
     }
 
 }

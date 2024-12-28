@@ -6,8 +6,11 @@ void Attivita::AggiungiDescrizione(std::string nuovaDescrizione) {
     descrizione = nuovaDescrizione;
 }
 
-void Attivita::AggiungiNome(std::string nuovoNome) {
+void Attivita::AggiungiNome(wxString nuovoNome) {
     nome = nuovoNome;
+}
+wxString Attivita::MostraNome() {
+    return nome;
 }
 /*
 void Attivita::AggiungiOrario(orario inizio, orario fine) {

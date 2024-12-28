@@ -11,7 +11,9 @@ public:
 
     void AggiungiDescrizione(std::string);
 
-    void AggiungiNome(std::string);
+    void AggiungiNome(wxString);
+
+    wxString MostraNome();
 
     void AggiungiOrario(orario , orario);
 

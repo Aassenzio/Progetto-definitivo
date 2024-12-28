@@ -16,3 +16,10 @@ void Data::ShowListaAttivita(wxArrayString* arrayDeiNomi) {
 void Data::AddAttivita(Attivita nuovaAggiunta){
     listaAttivita.push_back(nuovaAggiunta);
 }
+
+void Data::EditAttivita(wxString nomeVecchio, wxString nomeNuovo) {
+    auto iterator = listaAttivita.begin();
+    while ( (*iterator).MostraNome() != nomeVecchio)
+        iterator++;
+    (*iterator).AggiungiNome(nomeNuovo);
+}
