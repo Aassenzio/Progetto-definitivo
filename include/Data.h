@@ -8,6 +8,7 @@ public:
     Data(int);
     Data(int giorno, int mese, int anno);
     void ShowListaAttivita(wxArrayString* arrayDeiNomi);
+    void AddAttivita(Attivita);
 private:
     int _giorno;
     int _mese;

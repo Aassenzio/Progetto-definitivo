@@ -42,9 +42,9 @@ void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
     wxArrayString scelte; //array che contiene i nomi delle attivita
-    scelte.Add("Aggiungi Nuova Attivita'");
+    //scelte.Add("Aggiungi Nuova Attivita'");
     int dataEstesaSelezionata = CompattaData(annoSelezionato, meseSelezionato, giornoSelezionato);
-    registroAttivita->searchDate(dataEstesaSelezionata, &scelte); //cerco nel registro il giorno corrispondente
+    registroAttivita->searchDate(dataEstesaSelezionata, &scelte, dataCorrente); //cerco nel registro il giorno corrispondente
     wxString dataEstesaStringa = wxString::Format("%d/%d/%d", giornoSelezionato, meseSelezionato, annoSelezionato);
     wxStaticText* dataSopraAttivita = new wxStaticText(pannello, wxID_ANY, dataEstesaStringa,
                                                        wxPoint(100, 275), wxSize (-1,-1));
@@ -67,13 +67,18 @@ void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
     }
 //bottone che salva il contenuto della casella di testo
 void MyFrame::OnButtonSaveClick(wxCommandEvent& evt){
-
+    wxString nomeAttSelezionata = listBoxDiProva->GetString(listBoxDiProva->GetSelection());
     if(!nomeAttivita) {
-        nomeAttivita = new wxTextCtrl(pannello, wxID_ANY, "NOME", wxPoint(400, 400), wxSize(200, 30));
+        nomeAttivita = new wxTextCtrl(pannello, wxID_ANY, nomeAttSelezionata, wxPoint(400, 400), wxSize(200, 30));
     }else {
         delete nomeAttivita;
-        nomeAttivita = new wxTextCtrl(pannello, wxID_ANY, "NOME", wxPoint(400, 400), wxSize(200, 30));
+        nomeAttivita = new wxTextCtrl(pannello, wxID_ANY, nomeAttSelezionata, wxPoint(400, 400), wxSize(200, 30));
     }
+    if(!bottoneDiConfermaModifiche){
+        bottoneDiConfermaModifiche = new wxButton(pannello, wxID_ANY, "Applica/Salva", wxPoint(400, 500),
+                                                  wxSize(100,100));
+    }
+    bottoneDiConfermaModifiche->Bind(wxEVT_BUTTON, &MyFrame::OnButtonApplyClick, this);
      /*   wxString contenutoCasellaTesto = "Funziona ";
         wxFile file("output.txt", wxFile::write);
         if (file.IsOpened()) {
@@ -84,7 +89,14 @@ void MyFrame::OnButtonSaveClick(wxCommandEvent& evt){
             wxLogError("Impossibile aprire il file per la scrittura.");
         }*/
     }
+    //prende il nome nella casella di testo e aggiorna l attivita
+void MyFrame::OnButtonApplyClick(wxCommandEvent &evt) {
+    if(listBoxDiProva->GetSelection() == 0) {
+        wxString nomeModificato = nomeAttivita->GetLineText(0);
+        dataCorrente->AddAttivita(Attivita(nomeModificato));
+    }
 
+}
 void MyFrame::OnModificaData(wxCommandEvent& evt){
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();

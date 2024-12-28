@@ -7,7 +7,7 @@
 #include "Attivita.h"
 class Registro{
 public:
-    void searchDate(int data, wxArrayString* arrayDeiNomi);
+    void searchDate(int data, wxArrayString* arrayDeiNomi , Data*& dataCorrente);
 private:
     std::map<int, Data> mappaData;
 };

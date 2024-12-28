@@ -14,12 +14,15 @@ private:
     void OnButtonSearchClick(wxCommandEvent& evt);
     void OnModificaData(wxCommandEvent& evt);
     void OnButtonSaveClick(wxCommandEvent& evt);
+    void OnButtonApplyClick(wxCommandEvent& evt);
     wxSpinCtrl* sceltaGiorno = nullptr;
     wxSpinCtrl* sceltaMese= nullptr;
     wxSpinCtrl* sceltaAnno= nullptr;
     wxListBox* listBoxDiProva= nullptr;
     wxTextCtrl* nomeAttivita= nullptr;
     wxButton* bottoneModifica= nullptr;
+    wxButton* bottoneDiConfermaModifiche = nullptr;
     wxPanel* pannello= nullptr;
+    Data* dataCorrente = nullptr;
 };
 #endif //PROGETTODEFINITIVO_FINESTRA_H
