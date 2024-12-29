@@ -7,7 +7,7 @@
 #include <wx/wx.h>
 class Attivita{
 public:
-    Attivita(wxString);
+    Attivita(wxString nome,int data, int ID);
 
     void AggiungiDescrizione(std::string);
 
@@ -20,11 +20,14 @@ public:
     void ShowAttivita(wxArrayString* arrayDeiNomi);
 
     int MostraData();
+
+    int MostraID();
 private:
     //orario oraInizio;
    // orario oraFine;
    // std::string descrizione;
     wxString nome;
     int data;
+    int ID;
 };
 #endif //PROGETTODEFINITIVO_ATTIVITA_H

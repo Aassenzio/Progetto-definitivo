@@ -6,13 +6,14 @@
 
 class FinestraDiAggiunta:public wxFrame {
 public:
-    FinestraDiAggiunta(const wxString &title, Registro *registro);
+    FinestraDiAggiunta(const wxString &title, Registro *registro, int dataDaAggiungere);
     void OnBottoneSave(wxCommandEvent& evt);
 private:
     wxPanel* pannelloFinestraAggiunta ;
     Registro* registroAttivita;
     wxTextCtrl* testoNome;
     wxButton* bottoneSalvaNuovaAttivita ;
+    int dataAttivitaDaAggiungere;
 };
 
 

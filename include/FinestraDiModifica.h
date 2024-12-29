@@ -3,7 +3,7 @@
 #define PROGETTODEFINITIVO_FINESTRADIMODIFICA_H
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
-#include <wx/listctrl.h>
+#include <wx/grid.h>
 #include "Utility.h"
 #include "Registro.h"
 #include "Finestra.h"
@@ -17,7 +17,7 @@ public:
 private:
 
     int dataDiRicerca;
-    wxListCtrl* listaDiQualcosa;
+    wxGrid* grigliaAttivita;
     Registro* registroAttivita;
     wxPanel* pannelloSecondario;
     wxButton* bottoneAddAttivita;

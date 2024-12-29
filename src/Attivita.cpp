@@ -1,12 +1,12 @@
 #include "Attivita.h"
 
-Attivita::Attivita(wxString nuovoNome): nome(nuovoNome){};
+Attivita::Attivita(wxString nuovoNome, int nuovaData, int ID): nome(nuovoNome), data(nuovaData), ID(ID){};
 
 /*void Attivita::AggiungiDescrizione(std::string nuovaDescrizione) {
     descrizione = nuovaDescrizione;
 }*/
 
-void Attivita::AggiungiNome(wxString nuovoNome) {
+void Attivita::AggiungiNome(wxString nuovoNome){
     nome = nuovoNome;
 }
 wxString Attivita::MostraNome() {
@@ -14,6 +14,9 @@ wxString Attivita::MostraNome() {
 }
 int Attivita::MostraData() {
     return data;
+}
+int Attivita::MostraID() {
+    return ID;
 }
 /*
 void Attivita::AggiungiOrario(orario inizio, orario fine) {

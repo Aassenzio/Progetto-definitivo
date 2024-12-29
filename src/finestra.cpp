@@ -36,10 +36,11 @@ MyFrame::MyFrame(const wxString& title):wxFrame(nullptr, wxID_ANY, title ){
     sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
     sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
 };
-//funzione del bottone che cerca il giorno
+
 Registro* MyFrame::GetRegisterAddress() {
     return registroAttivita;
 };
+//funzione del bottone che cerca il giorno
 void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
     int giornoSelezionato = sceltaGiorno->GetValue();// Prende i valori per compattare la data
     int meseSelezionato = sceltaMese->GetValue();
@@ -75,41 +76,41 @@ void MyFrame::OnButtonSearchClick(wxCommandEvent& evt){
     secondaFinestra->Show();
     }
 //bottone che salva il contenuto della casella di testo
-void MyFrame::OnButtonSaveClick(wxCommandEvent& evt){
-    wxString nomeAttSelezionata = listBoxDiProva->GetString(listBoxDiProva->GetSelection());
-    if(!nomeAttivita) {
-        nomeAttivita = new wxTextCtrl(pannello, wxID_ANY, nomeAttSelezionata, wxPoint(400, 400), wxSize(200, 30));
-    }else {
-        delete nomeAttivita;
-        nomeAttivita = new wxTextCtrl(pannello, wxID_ANY, nomeAttSelezionata, wxPoint(400, 400), wxSize(200, 30));
-    }
-    if(!bottoneDiConfermaModifiche){
-        bottoneDiConfermaModifiche = new wxButton(pannello, wxID_ANY, "Applica/Salva", wxPoint(400, 500),
-                                                  wxSize(100,100));
-    }
-    bottoneDiConfermaModifiche->Bind(wxEVT_BUTTON, &MyFrame::OnButtonApplyClick, this);
-     /*   wxString contenutoCasellaTesto = "Funziona ";
-        wxFile file("output.txt", wxFile::write);
-        if (file.IsOpened()) {
-            file.Write(contenutoCasellaTesto);
-            file.Close();
-            wxLogMessage("Testo salvato su file.");
-        } else {
-            wxLogError("Impossibile aprire il file per la scrittura.");
-        }*/
-    }
-    //prende il nome nella casella di testo e aggiorna l attivita
+/*void MyFrame::OnButtonSaveClick(wxCommandEvent& evt){
+   wxString nomeAttSelezionata = listBoxDiProva->GetString(listBoxDiProva->GetSelection());
+   if(!nomeAttivita) {
+       nomeAttivita = new wxTextCtrl(pannello, wxID_ANY, nomeAttSelezionata, wxPoint(400, 400), wxSize(200, 30));
+   }else {
+       delete nomeAttivita;
+       nomeAttivita = new wxTextCtrl(pannello, wxID_ANY, nomeAttSelezionata, wxPoint(400, 400), wxSize(200, 30));
+   }
+   if(!bottoneDiConfermaModifiche){
+       bottoneDiConfermaModifiche = new wxButton(pannello, wxID_ANY, "Applica/Salva", wxPoint(400, 500),
+                                                 wxSize(100,100));
+   }
+   bottoneDiConfermaModifiche->Bind(wxEVT_BUTTON, &MyFrame::OnButtonApplyClick, this);
+    /*   wxStrinontenutoCasellaTesto = "Funziona ";
+       wxFile file("output.txt", wxFile::write);
+       if (file.IsOpened()) {
+           file.Write(contenutoCasellaTesto);
+           file.Close();
+           wxLogMessage("Testo salvato su file.");
+       } else {
+           wxLogError("Impossibile aprire il file per la scrittura.");
+       }
+   }
+   //prende il nome nella casella di testo e aggiorna l attivita
 void MyFrame::OnButtonApplyClick(wxCommandEvent &evt) {
-        wxString nomeAttuale  = listBoxDiProva->GetString(listBoxDiProva->GetSelection());
-        wxString nomeNellCasella = nomeAttivita->GetLineText(0);
-    if(listBoxDiProva->GetSelection() == 0) {
-        dataCorrente->AddAttivita(Attivita(nomeNellCasella));
-    }else {
-        dataCorrente->EditAttivita(nomeAttuale , nomeNellCasella);
+       wxString nomeAttuale  = listBoxDiProva->GetString(listBoxDiProva->GetSelection());
+       wxString nomeNellCasella = nomeAttivita->GetLineText(0);
+   if(listBoxDiProva->GetSelection() == 0) {
+       dataCorrente->AddAttivita(Attivita(nomeNellCasella));
+   }else {
+       dataCorrente->EditAttivita(nomeAttuale , nomeNellCasella);
 
-    }
+   }
 
-}
+}*/
 void MyFrame::OnModificaData(wxCommandEvent& evt){
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();

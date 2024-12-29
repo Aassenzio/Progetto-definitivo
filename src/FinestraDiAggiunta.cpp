@@ -1,7 +1,8 @@
 #include "FinestraDiAggiunta.h"
 
-FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro* registro ):wxFrame(nullptr, wxID_ANY, title ),
-                                       registroAttivita(registro), testoNome(nullptr), bottoneSalvaNuovaAttivita(nullptr), pannelloFinestraAggiunta(nullptr) {
+FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro* registro, int data ):wxFrame(nullptr, wxID_ANY, title ),
+                                       registroAttivita(registro), dataAttivitaDaAggiungere(data), testoNome(nullptr),
+                                       bottoneSalvaNuovaAttivita(nullptr), pannelloFinestraAggiunta(nullptr) {
     pannelloFinestraAggiunta = new wxPanel(this);
     if(!testoNome){
         testoNome = new wxTextCtrl(pannelloFinestraAggiunta, wxID_ANY, "Inserisci qui il nome", wxPoint(100,100),
@@ -14,5 +15,8 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro* registro
 };
 void FinestraDiAggiunta::OnBottoneSave(wxCommandEvent& evt) {
     wxString nuovoNome = testoNome->GetLineText(0);
-    registroAttivita->AddAttivita(nuovoNome);
+    registroAttivita->AddAttivita(nuovoNome, dataAttivitaDaAggiungere);
+    this->Close();
+    wxMessageBox("L'attivita' salvata correttamente!", "Conferma Salvataggio", wxOK | wxICON_INFORMATION, this);
+
 }

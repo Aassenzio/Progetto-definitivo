@@ -15,8 +15,8 @@ private:
     Registro* registroAttivita;
     void OnButtonSearchClick(wxCommandEvent& evt);
     void OnModificaData(wxCommandEvent& evt);
-    void OnButtonSaveClick(wxCommandEvent& evt);
-    void OnButtonApplyClick(wxCommandEvent& evt);
+  //  void OnButtonSaveClick(wxCommandEvent& evt);
+   // void OnButtonApplyClick(wxCommandEvent& evt);
     wxSpinCtrl* sceltaGiorno = nullptr;
     wxSpinCtrl* sceltaMese= nullptr;
     wxSpinCtrl* sceltaAnno= nullptr;
