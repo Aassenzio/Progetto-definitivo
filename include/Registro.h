@@ -11,7 +11,7 @@ class Registro{
 public:
     void searchDate(int data, wxGrid* listaDiQualcosa);
     int GetAbsCounter();
-    void AddAttivita(wxString nome, int data, wxString descrizione);
+    void AddAttivita(wxString nome, int data, wxString descrizione, Orario inizio, Orario fine);
 private:
     int contatoreAssoluto = 0;
     std::vector<Attivita> vettoreAttivita;

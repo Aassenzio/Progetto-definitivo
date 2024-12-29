@@ -42,9 +42,11 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro* registro
     minutoInizio->Bind(wxEVT_SPINCTRL , &FinestraDiAggiunta::OnCambioOra , this);
 };
 void FinestraDiAggiunta::OnBottoneSave(wxCommandEvent& evt) {
-    wxString nuovoNome = testoNome->GetLineText(0);
     wxString nuovaDescrizione = testoDescrizione->GetLineText(0);
-    registroAttivita->AddAttivita(nuovoNome, dataAttivitaDaAggiungere, nuovaDescrizione);
+    Orario orarioInizioAttivita(oraInizio->GetValue(), minutoInizio->GetValue());
+    Orario orarioFineAttivita(oraFine->GetValue(), minutoFine->GetValue());
+    registroAttivita->AddAttivita(testoNome->GetLineText(0), dataAttivitaDaAggiungere, nuovaDescrizione ,
+                                  orarioInizioAttivita, orarioFineAttivita);
     this->Close();
     wxMessageBox("L'attivita' salvata correttamente!", "Conferma Salvataggio", wxOK | wxICON_INFORMATION, this);
 

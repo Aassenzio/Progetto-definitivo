@@ -17,7 +17,9 @@ int Registro::GetAbsCounter() {
     return contatoreAssoluto;
 }
 
-void Registro::AddAttivita(wxString nomeAttivita, int dataAttivita, wxString descrizioneAttivita) {
-    vettoreAttivita.push_back(Attivita(nomeAttivita, dataAttivita, contatoreAssoluto, descrizioneAttivita));
+void Registro::AddAttivita(wxString nomeAttivita, int dataAttivita, wxString descrizioneAttivita, Orario inizioAtt,
+                           Orario fineAtt) {
+    vettoreAttivita.push_back(Attivita(nomeAttivita, dataAttivita, contatoreAssoluto, descrizioneAttivita, inizioAtt,
+                                       fineAtt));
     contatoreAssoluto++;
 }

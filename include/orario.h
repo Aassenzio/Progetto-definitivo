@@ -4,10 +4,10 @@
 
 #ifndef PROGETTODEFINITIVO_ORARIO_H
 #define PROGETTODEFINITIVO_ORARIO_H
-class orario
+class Orario
         {
     public:
-            orario(int oraInserita, int minutoInserito):
+            Orario(int oraInserita, int minutoInserito):
             ore(oraInserita), minuti(minutoInserito){};
 
             void stampaOrario();
