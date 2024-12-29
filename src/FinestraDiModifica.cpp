@@ -7,11 +7,12 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro* registro ,int 
     pannelloSecondario = new wxPanel(this);
     if(!grigliaAttivita){  //griglia con i vari campi delle attivita
         grigliaAttivita = new wxGrid(pannelloSecondario, wxID_ANY, wxPoint(100,100), wxSize(500,300));
-        grigliaAttivita->CreateGrid(0,4);
+        grigliaAttivita->CreateGrid(0,5);
+        grigliaAttivita->HideCol(0);
         grigliaAttivita->SetColLabelValue(1, "Nome");
         grigliaAttivita->SetColLabelValue(2, "Data");
-        grigliaAttivita->HideCol(0);
-        grigliaAttivita->SetColLabelValue(3, "Descrizione");
+        grigliaAttivita->SetColLabelValue(3,"Orario Durata");
+        grigliaAttivita->SetColLabelValue(4, "Descrizione");
         grigliaAttivita->SetSelectionMode(wxGrid::wxGridSelectRows);
         grigliaAttivita->EnableEditing(false);
     }
@@ -32,7 +33,7 @@ void FrameSecondario::SetDataDiRicerca(int data) {
 
 void FrameSecondario::OnBottoneAdd(wxCommandEvent& evt){
     FinestraDiAggiunta* finestraDiAggiunta =new FinestraDiAggiunta("Aggiungi Attivita", registroAttivita, dataDiRicerca);
-    finestraDiAggiunta->SetClientSize(800, 600);
+    finestraDiAggiunta->SetClientSize(475, 400);
     finestraDiAggiunta->Center();
     finestraDiAggiunta->Show();
     this->Close();

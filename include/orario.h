@@ -7,16 +7,14 @@
 class orario
         {
     public:
-            orario(int oraInserita, int minutoInserito, int secondoInserito=0):
-            ore(oraInserita), minuti(minutoInserito), secondi(secondoInserito){};
+            orario(int oraInserita, int minutoInserito):
+            ore(oraInserita), minuti(minutoInserito){};
 
             void stampaOrario();
 
-            orario durata(const orario&)const;
     private:
             int ore;
             int minuti;
-            int secondi;
         };
 
 #endif //PROGETTODEFINITIVO_ORARIO_H

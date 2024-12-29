@@ -4,6 +4,7 @@
 #include <vector>
 #include<wx/wx.h>
 #include<wx/grid.h>
+#include <wx/spinctrl.h>
 #include "Data.h"
 #include "Attivita.h"
 class Registro{
