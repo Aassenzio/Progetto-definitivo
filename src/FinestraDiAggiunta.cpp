@@ -8,6 +8,10 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro* registro
         testoNome = new wxTextCtrl(pannelloFinestraAggiunta, wxID_ANY, "Inserisci qui il nome", wxPoint(100,100),
                                    wxSize(-1, -1));
     }
+    if(!testoDescrizione){
+        testoDescrizione = new wxTextCtrl(pannelloFinestraAggiunta, wxID_ANY, "Inserisci qui la descrizione",
+                                          wxPoint(100,200), wxSize(150, 200));
+    }
     if(!bottoneSalvaNuovaAttivita){
         bottoneSalvaNuovaAttivita = new wxButton(pannelloFinestraAggiunta, wxID_ANY, "Salva", wxPoint(200, 100), wxSize(-1,-1));
     }
@@ -15,7 +19,8 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro* registro
 };
 void FinestraDiAggiunta::OnBottoneSave(wxCommandEvent& evt) {
     wxString nuovoNome = testoNome->GetLineText(0);
-    registroAttivita->AddAttivita(nuovoNome, dataAttivitaDaAggiungere);
+    wxString nuovaDescrizione = testoDescrizione->GetLineText(0);
+    registroAttivita->AddAttivita(nuovoNome, dataAttivitaDaAggiungere, nuovaDescrizione);
     this->Close();
     wxMessageBox("L'attivita' salvata correttamente!", "Conferma Salvataggio", wxOK | wxICON_INFORMATION, this);
 

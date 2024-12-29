@@ -12,6 +12,7 @@ private:
     wxPanel* pannelloFinestraAggiunta ;
     Registro* registroAttivita;
     wxTextCtrl* testoNome;
+    wxTextCtrl* testoDescrizione;
     wxButton* bottoneSalvaNuovaAttivita ;
     int dataAttivitaDaAggiungere;
 };

@@ -5,13 +5,13 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro* registro ,int 
                                                                     registroAttivita(registro), dataDiRicerca(data),
                                                                     grigliaAttivita(nullptr), bottoneAddAttivita(nullptr){
     pannelloSecondario = new wxPanel(this);
-    if(!grigliaAttivita){
+    if(!grigliaAttivita){  //griglia con i vari campi delle attivita
         grigliaAttivita = new wxGrid(pannelloSecondario, wxID_ANY, wxPoint(100,100), wxSize(500,300));
-        grigliaAttivita->CreateGrid(0,3);
+        grigliaAttivita->CreateGrid(0,4);
         grigliaAttivita->SetColLabelValue(1, "Nome");
         grigliaAttivita->SetColLabelValue(2, "Data");
         grigliaAttivita->HideCol(0);
-
+        grigliaAttivita->SetColLabelValue(3, "Descrizione");
         grigliaAttivita->SetSelectionMode(wxGrid::wxGridSelectRows);
         grigliaAttivita->EnableEditing(false);
     }
