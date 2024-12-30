@@ -72,8 +72,6 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro
     bottoneAnnulla->Bind(wxEVT_BUTTON, &FinestraDiAggiunta::OnBottoneAnnulla, this);
     oraInizio->Bind(wxEVT_SPINCTRL, &FinestraDiAggiunta::OnCambioOra, this);
     minutoInizio->Bind(wxEVT_SPINCTRL, &FinestraDiAggiunta::OnCambioOra, this);
-    this->Refresh();
-    this->Update();
 
 };
 
