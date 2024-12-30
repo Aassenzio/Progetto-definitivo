@@ -5,17 +5,14 @@
 class Orario
         {
     public:
-            Orario(int oraInserita, int minutoInserito):
-            ore(oraInserita), minuti(minutoInserito){};
+            Orario(int oraInserita, int minutoInserito);
 
-            int GetOre();
-            int GetMinuti();
             wxString GetOrarioStringa();
 
 
     private:
-            int ore;
-            int minuti;
+            wxString ore;
+            wxString minuti;
         };
 
 #endif //PROGETTODEFINITIVO_ORARIO_H

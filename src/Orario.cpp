@@ -1,15 +1,18 @@
 #include "Orario.h"
 
-int Orario::GetOre() {
-    return ore;
-}
-int Orario::GetMinuti() {
-    return minuti;
-}
+Orario::Orario(int oraInserita, int minutoInserito){
+    ore = wxString::Format(wxT("%i"),oraInserita);
+    minuti = wxString::Format(wxT("%i"),minutoInserito);
+    if (oraInserita < 10){
+        ore = "0" + ore;
+    }
+    if(minutoInserito< 10){
+        minuti = "0"+ minuti;
+    }
+};
+
 
 wxString Orario::GetOrarioStringa() {
-    wxString stringaOre = wxString::Format(wxT("%i"),ore);
-    wxString stringaMinuti = wxString::Format(wxT("%i"),minuti);
-    wxString stringaFinale = stringaOre + ":" + stringaMinuti;
+    wxString stringaFinale = ore + ":" + minuti;
     return stringaFinale;
 }
