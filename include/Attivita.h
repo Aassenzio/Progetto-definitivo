@@ -17,7 +17,6 @@ public:
 
     wxString MostraNome();
 
-
     void ShowAttivita(wxArrayString *arrayDeiNomi);
 
     wxString MostraDescrizione();
@@ -27,6 +26,7 @@ public:
     int MostraID();
 
     wxString GetOrarioStringaCompleto();
+
 
 private:
     Orario inizioAtt;

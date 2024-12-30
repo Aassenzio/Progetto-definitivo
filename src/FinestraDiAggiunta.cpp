@@ -28,7 +28,7 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro
                                                       wxPoint(50, 100), wxSize(-1, -1));
     if (!testoDescrizione) {
         testoDescrizione = new wxTextCtrl(pannelloFinestraAggiunta, wxID_ANY, "Inserisci qui la descrizione",
-                                          wxPoint(50, 125), wxSize(175, 175));
+                                          wxPoint(50, 125), wxSize(170, 170));
     }
 
     if (!bottoneSalvaNuovaAttivita) {
@@ -79,9 +79,8 @@ void FinestraDiAggiunta::OnBottoneSave(wxCommandEvent &evt) {
     Orario orarioFineAttivita(oraFine->GetValue(), minutoFine->GetValue());
     registroAttivita->AddAttivita(testoNome->GetLineText(0), dataAttivitaDaAggiungere, nuovaDescrizione,
                                   orarioInizioAttivita, orarioFineAttivita);
-    this->Close();
     wxMessageBox("L'attivita' salvata correttamente!", "Conferma Salvataggio", wxOK | wxICON_INFORMATION, this);
-
+    this->Close();
 }
 
 void FinestraDiAggiunta::OnBottoneAnnulla(wxCommandEvent &evt) {

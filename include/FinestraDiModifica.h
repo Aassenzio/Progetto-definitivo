@@ -18,15 +18,20 @@ public:
 
     void SetDataDiRicerca(int);
 
-    void OnBottoneAdd(wxCommandEvent &evt);
+    void OnBottoneAdd(wxCommandEvent& evt);
+
+    void OnSelezioneRiga(wxGridEvent& evt);
+
+    void OnBottoneElimina(wxCommandEvent& evt);
 
 private:
-
+    int selezioneCorrente;
     int dataDiRicerca;
     wxGrid *grigliaAttivita;
     Registro *registroAttivita;
     wxPanel *pannelloSecondario;
     wxButton *bottoneAddAttivita;
+    wxButton *bottoneEliminaAttivita;
 };
 
 #endif //PROGETTODEFINITIVO_FINESTRADIMODIFICA_H

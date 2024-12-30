@@ -5,8 +5,10 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, int 
                                                                                                 title),
                                                                                         registroAttivita(registro),
                                                                                         dataDiRicerca(data),
+                                                                                        selezioneCorrente(0),
                                                                                         grigliaAttivita(nullptr),
-                                                                                        bottoneAddAttivita(nullptr) {
+                                                                                        bottoneAddAttivita(nullptr),
+                                                                                        bottoneEliminaAttivita(nullptr){
     pannelloSecondario = new wxPanel(this);
     if (!grigliaAttivita) {  //griglia con i vari campi delle attivita
         grigliaAttivita = new wxGrid(pannelloSecondario, wxID_ANY, wxPoint(25, 25), wxSize(700, 400));
@@ -28,7 +30,13 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, int 
         bottoneAddAttivita = new wxButton(pannelloSecondario, wxID_ANY, "Aggiungi Attivita", wxPoint(650, 475),
                                           wxSize(100, 25));
     }
+    if(!bottoneEliminaAttivita) {
+        bottoneEliminaAttivita = new wxButton(pannelloSecondario, wxID_ANY, "Elimina Attivita", wxPoint(650, 525));
+    }
+    bottoneEliminaAttivita->Disable();
     bottoneAddAttivita->Bind(wxEVT_BUTTON, &FrameSecondario::OnBottoneAdd, this);
+    grigliaAttivita->Bind(wxEVT_GRID_SELECT_CELL, &FrameSecondario::OnSelezioneRiga, this);
+    bottoneEliminaAttivita->Bind(wxEVT_BUTTON, &FrameSecondario::OnBottoneElimina, this);
 }
 
 void FrameSecondario::SetRegister(Registro *registro) {
@@ -46,4 +54,17 @@ void FrameSecondario::OnBottoneAdd(wxCommandEvent &evt) {
     finestraDiAggiunta->Center();
     finestraDiAggiunta->Show();
     this->Close();
+}
+
+void FrameSecondario::OnBottoneElimina(wxCommandEvent &evt) {
+    registroAttivita->EliminaAttivita(selezioneCorrente);
+    wxMessageBox("Attivita eliminata correttamente", "Conferma Eliminazione", wxOK | wxICON_INFORMATION, this);
+    this->Close();
+}
+
+void FrameSecondario::OnSelezioneRiga(wxGridEvent &evt) {
+    wxString ID = grigliaAttivita->GetCellValue(evt.GetRow(),0);
+    selezioneCorrente = wxAtoi(ID);
+    bottoneEliminaAttivita->Enable();
+
 }

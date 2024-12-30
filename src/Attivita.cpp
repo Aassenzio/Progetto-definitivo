@@ -8,6 +8,7 @@ void Attivita::AggiungiNome(wxString nuovoNome) {
     nome = nuovoNome;
 }
 
+
 wxString Attivita::MostraNome() {
     return nome;
 }
