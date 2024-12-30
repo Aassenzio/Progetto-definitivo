@@ -9,7 +9,6 @@ add_executable(${BINARY}_run ${SOURCES})
 add_executable(ProgettoDefinitivo main.cpp
         Orario.cpp
         finestra.cpp
-        app.cpp
         data.cpp
         Utility.cpp
         Attivita.cpp
