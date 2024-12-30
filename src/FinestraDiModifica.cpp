@@ -11,7 +11,7 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro* registro ,int 
         grigliaAttivita->HideCol(0);
         grigliaAttivita->SetColLabelValue(1, "Nome");
         grigliaAttivita->SetColLabelValue(2, "Data");
-        grigliaAttivita->SetColLabelValue(3,"Orario Durata");
+        grigliaAttivita->SetColLabelValue(3,"Orario inizio/fine");
         grigliaAttivita->SetColLabelValue(4, "Descrizione");
         grigliaAttivita->SetSelectionMode(wxGrid::wxGridSelectRows);
         grigliaAttivita->EnableEditing(false);

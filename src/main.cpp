@@ -1,5 +1,5 @@
 #include <iostream>
-#include "orario.h"
+#include "Orario.h"
 #include <wx/wx.h>
 #include "app.h"
 #include "finestra.h"

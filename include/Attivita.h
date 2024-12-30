@@ -1,7 +1,7 @@
 
 #ifndef PROGETTODEFINITIVO_ATTIVITA_H
 #define PROGETTODEFINITIVO_ATTIVITA_H
-#include "orario.h"
+#include "Orario.h"
 #include <iostream>
 #include <string>
 #include <wx/wx.h>
@@ -23,6 +23,9 @@ public:
     int MostraData();
 
     int MostraID();
+
+    wxString GetOrarioStringaCompleto();
+
 private:
     Orario inizioAtt;
     Orario fineAtt;

@@ -6,7 +6,7 @@ set(SOURCES ${TEST_SOURCES})
 
 add_executable(${BINARY} ${TEST_SOURCES}
         test1.cpp
-        ../include/orario.h
+        ../include/Orario.h
         ../include/finestra.h
         ../include/app.h
         ../include/Data.h

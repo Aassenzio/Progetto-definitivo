@@ -23,3 +23,10 @@ wxString Attivita::MostraDescrizione() {
 void Attivita::ShowAttivita(wxArrayString* arrayDeiNomi) {
     arrayDeiNomi->Add(nome);
 }
+
+wxString Attivita::GetOrarioStringaCompleto(){
+    wxString orarioInizioStringa = inizioAtt.GetOrarioStringa();
+    wxString orarioFineStringa = fineAtt.GetOrarioStringa();
+    wxString orarioStringaFinale = "Inizio " + orarioInizioStringa + " Fine " + orarioFineStringa;
+    return orarioStringaFinale;
+}
