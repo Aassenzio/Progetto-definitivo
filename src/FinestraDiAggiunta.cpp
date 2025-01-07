@@ -68,28 +68,28 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro
         minutoFine = new wxSpinCtrl(pannelloFinestraAggiunta, wxID_ANY, "", wxPoint(325, 200), wxSize(-1, -1));
         minutoFine->SetRange(0, 59);
     }
-    bottoneSalvaNuovaAttivita->Bind(wxEVT_BUTTON, &FinestraDiAggiunta::OnBottoneSave, this);
-    bottoneAnnulla->Bind(wxEVT_BUTTON, &FinestraDiAggiunta::OnBottoneAnnulla, this);
-    oraInizio->Bind(wxEVT_SPINCTRL, &FinestraDiAggiunta::OnCambioOra, this);
-    minutoInizio->Bind(wxEVT_SPINCTRL, &FinestraDiAggiunta::OnCambioOra, this);
+    bottoneSalvaNuovaAttivita->Bind(wxEVT_BUTTON, &FinestraDiAggiunta::onBottoneSave, this);
+    bottoneAnnulla->Bind(wxEVT_BUTTON, &FinestraDiAggiunta::onBottoneAnnulla, this);
+    oraInizio->Bind(wxEVT_SPINCTRL, &FinestraDiAggiunta::onCambioOra, this);
+    minutoInizio->Bind(wxEVT_SPINCTRL, &FinestraDiAggiunta::onCambioOra, this);
 
 };
 
-void FinestraDiAggiunta::OnBottoneSave(wxCommandEvent &evt) {
+void FinestraDiAggiunta::onBottoneSave(wxCommandEvent &evt) {
     wxString nuovaDescrizione = testoDescrizione->GetLineText(0);
     Orario orarioInizioAttivita(oraInizio->GetValue(), minutoInizio->GetValue());
     Orario orarioFineAttivita(oraFine->GetValue(), minutoFine->GetValue());
-    registroAttivita->AddAttivita(testoNome->GetLineText(0), dataAttivitaDaAggiungere, nuovaDescrizione,
+    registroAttivita->addAttivita(testoNome->GetLineText(0), dataAttivitaDaAggiungere, nuovaDescrizione,
                                   orarioInizioAttivita, orarioFineAttivita);
     wxMessageBox("L'attivita' salvata correttamente!", "Conferma Salvataggio", wxOK | wxICON_INFORMATION, this);
     this->Close();
 }
 
-void FinestraDiAggiunta::OnBottoneAnnulla(wxCommandEvent &evt) {
+void FinestraDiAggiunta::onBottoneAnnulla(wxCommandEvent &evt) {
     this->Close();
 }
 
-void FinestraDiAggiunta::OnCambioOra(wxCommandEvent &evt) {
+void FinestraDiAggiunta::onCambioOra(wxCommandEvent &evt) {
     oraFine->SetRange(oraInizio->GetValue(), 23);
     if (oraInizio->GetValue() == oraFine->GetValue()) {
         minutoFine->SetRange(minutoInizio->GetValue(), 59);

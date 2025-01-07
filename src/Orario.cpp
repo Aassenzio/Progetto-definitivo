@@ -12,7 +12,7 @@ Orario::Orario(int oraInserita, int minutoInserito) {
 };
 
 
-wxString Orario::GetOrarioStringa() {
+wxString Orario::getOrarioStringa() {
     wxString stringaFinale = ore + ":" + minuti;
     return stringaFinale;
 }

@@ -4,40 +4,37 @@ Attivita::Attivita(wxString nuovoNome, GiornoDelCalendario nuovaData, int ID, wx
         nome(nuovoNome), data(nuovaData),
         ID(ID), descrizione(nuovaDescrizione), inizioAtt(inizio), fineAtt(fine) {};
 
-void Attivita::AggiungiNome(wxString nuovoNome) {
+void Attivita::aggiungiNome(wxString nuovoNome) {
     nome = nuovoNome;
 }
 
 
-wxString Attivita::MostraNome()const {
+wxString Attivita::mostraNome()const {
     return nome;
 }
 
-GiornoDelCalendario Attivita::MostraData()const {
+GiornoDelCalendario Attivita::mostraData()const {
     return data;
 }
 
-int Attivita::MostraID()const {
+int Attivita::mostraId()const {
     return ID;
 }
 
-wxString Attivita::MostraDescrizione()const {
+wxString Attivita::mostraDescrizione()const {
     return descrizione;
 }
 
-void Attivita::ShowAttivita(wxArrayString *arrayDeiNomi) {
-   arrayDeiNomi->Add(nome);
-}
 
 
-wxString Attivita::GetOrarioStringaCompleto() {
-    wxString orarioInizioStringa = inizioAtt.GetOrarioStringa();
-    wxString orarioFineStringa = fineAtt.GetOrarioStringa();
+wxString Attivita::getOrarioStringaCompleto() {
+    wxString orarioInizioStringa = inizioAtt.getOrarioStringa();
+    wxString orarioFineStringa = fineAtt.getOrarioStringa();
     wxString orarioStringaFinale = "Inizio " + orarioInizioStringa + " Fine " + orarioFineStringa;
     return orarioStringaFinale;
 }
 
-wxString Attivita::StampaData() {
-    wxString stringaData = wxString::Format(wxT("%i/%i/%i"),data.GetGiorno(),data.GetMese(),data.GetAnno());
+wxString Attivita::stampaData() {
+    wxString stringaData = wxString::Format(wxT("%i/%i/%i"), data.getGiorno(), data.getMese(), data.getAnno());
     return stringaData;
 }

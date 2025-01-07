@@ -11,23 +11,23 @@ class MyFrame : public wxFrame {
 public:
     MyFrame(const wxString &title);
 
-    Registro *GetRegisterAddress();
 
 private:
+
+    void onButtonSearchClick(wxCommandEvent &evt);
+
+    void onModificaData(wxCommandEvent &evt);
+
     Registro *registroAttivita;
-
-    void OnButtonSearchClick(wxCommandEvent &evt);
-
-    void OnModificaData(wxCommandEvent &evt);
-
-    //  void OnButtonSaveClick(wxCommandEvent& evt);
-    // void OnButtonApplyClick(wxCommandEvent& evt);
-    wxSpinCtrl *sceltaGiorno = nullptr;
-    wxSpinCtrl *sceltaMese = nullptr;
-    wxSpinCtrl *sceltaAnno = nullptr;
-    wxButton *bottoneModifica = nullptr;
-    wxButton *bottoneDiConfermaModifiche = nullptr;
-    wxPanel *pannello = nullptr;
+    wxSpinCtrl *sceltaGiorno;
+    wxSpinCtrl *sceltaMese ;
+    wxSpinCtrl *sceltaAnno ;
+    wxButton *bottoneDiRicerca;
+    wxStaticText *testoDiBenvenuto;
+    wxStaticText *testoSopraMese;
+    wxStaticText *testoSopraGiorno;
+    wxStaticText *testoSopraAnno;
+    wxPanel *pannello;
 };
 
 #endif //PROGETTODEFINITIVO_FINESTRAPRINCIPALE_H

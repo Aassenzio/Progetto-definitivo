@@ -34,17 +34,14 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, Gior
         bottoneEliminaAttivita = new wxButton(pannelloSecondario, wxID_ANY, "Elimina Attivita", wxPoint(650, 525));
     }
     bottoneEliminaAttivita->Disable();
-    bottoneAddAttivita->Bind(wxEVT_BUTTON, &FrameSecondario::OnBottoneAdd, this);
-    grigliaAttivita->Bind(wxEVT_GRID_SELECT_CELL, &FrameSecondario::OnSelezioneRiga, this);
-    bottoneEliminaAttivita->Bind(wxEVT_BUTTON, &FrameSecondario::OnBottoneElimina, this);
-}
-
-void FrameSecondario::SetRegister(Registro *registro) {
-    registroAttivita = registro;
+    bottoneAddAttivita->Bind(wxEVT_BUTTON, &FrameSecondario::onBottoneAdd, this);
+    grigliaAttivita->Bind(wxEVT_GRID_SELECT_CELL, &FrameSecondario::onSelezioneRiga, this);
+    bottoneEliminaAttivita->Bind(wxEVT_BUTTON, &FrameSecondario::onBottoneElimina, this);
 }
 
 
-void FrameSecondario::OnBottoneAdd(wxCommandEvent &evt) {
+
+void FrameSecondario::onBottoneAdd(wxCommandEvent &evt) {
     FinestraDiAggiunta *finestraDiAggiunta = new FinestraDiAggiunta("Aggiungi Attivita", registroAttivita,
                                                                     dataDiRicerca);
     finestraDiAggiunta->SetClientSize(475, 375);
@@ -53,13 +50,13 @@ void FrameSecondario::OnBottoneAdd(wxCommandEvent &evt) {
     this->Close();
 }
 
-void FrameSecondario::OnBottoneElimina(wxCommandEvent &evt) {
-    registroAttivita->EliminaAttivita(selezioneCorrente);
+void FrameSecondario::onBottoneElimina(wxCommandEvent &evt) {
+    registroAttivita->eliminaAttivita(selezioneCorrente);
     wxMessageBox("Attivita eliminata correttamente", "Conferma Eliminazione", wxOK | wxICON_INFORMATION, this);
     this->Close();
 }
 
-void FrameSecondario::OnSelezioneRiga(wxGridEvent &evt) {
+void FrameSecondario::onSelezioneRiga(wxGridEvent &evt) {
     wxString ID = grigliaAttivita->GetCellValue(evt.GetRow(),0);
     selezioneCorrente = wxAtoi(ID);
     bottoneEliminaAttivita->Enable();

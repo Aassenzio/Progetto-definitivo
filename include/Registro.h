@@ -15,11 +15,10 @@ public:
 
     void searchDate(GiornoDelCalendario data, wxGrid *listaDiQualcosa);
 
-    int GetAbsCounter();
 
-    void AddAttivita(wxString nome, GiornoDelCalendario data, wxString descrizione, Orario inizio, Orario fine);
+    void addAttivita(wxString nome, GiornoDelCalendario data, wxString descrizione, Orario inizio, Orario fine);
 
-    void EliminaAttivita(int ID);
+    void eliminaAttivita(int ID);
 
 
 private:

@@ -8,7 +8,7 @@ class Orario {
 public:
     Orario(int oraInserita, int minutoInserito);
 
-    wxString GetOrarioStringa();
+    wxString getOrarioStringa();
 
 
 private:

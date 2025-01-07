@@ -9,11 +9,11 @@ class FinestraDiAggiunta : public wxFrame {
 public:
     FinestraDiAggiunta(const wxString &title, Registro *registro, GiornoDelCalendario dataDaAggiungere);
 
-    void OnBottoneSave(wxCommandEvent &evt);
+    void onBottoneSave(wxCommandEvent &evt);
 
-    void OnBottoneAnnulla(wxCommandEvent &evt);
+    void onBottoneAnnulla(wxCommandEvent &evt);
 
-    void OnCambioOra(wxCommandEvent &evt);
+    void onCambioOra(wxCommandEvent &evt);
 
 private:
     wxPanel *pannelloFinestraAggiunta;

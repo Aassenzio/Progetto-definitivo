@@ -1,16 +1,21 @@
 
-#include "FinestraPrincipale.h"
+
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
-
 #include <wx/file.h>
+#include "FinestraPrincipale.h"
 
-MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) {
+MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) ,registroAttivita(nullptr), sceltaGiorno(nullptr),
+                                        sceltaMese(nullptr), sceltaAnno(nullptr), bottoneDiRicerca(nullptr), pannello(nullptr),
+                                        testoSopraAnno(nullptr), testoSopraGiorno(nullptr), testoSopraMese(nullptr){
     pannello = new wxPanel(this);
+
     registroAttivita = new Registro;
-    wxStaticText *testoDiBenvenuto = new wxStaticText(pannello, wxID_ANY,
+
+    testoDiBenvenuto = new wxStaticText(pannello, wxID_ANY,
                                                       "Seleziona il giorno di cui vuoi visualizzare le attivita",
                                                       wxPoint(50, 20), wxSize(-1, -1));
+    //selezione data con spinCtrl, controllo di correttezza in basso su evento
     sceltaMese = new wxSpinCtrl(pannello, wxID_ANY, "", wxPoint(100, 75), wxSize(-1, -1));
     sceltaMese->SetRange(1, 12);
 
@@ -20,46 +25,39 @@ MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) {
     sceltaAnno = new wxSpinCtrl(pannello, wxID_ANY, " ", wxPoint(150, 75), wxSize(80, -1));
     sceltaAnno->SetRange(1900, 2100);
 
-    wxButton *bottoneDiRicerca = new wxButton(pannello, wxID_ANY, "Cerca", wxPoint(250, 75), wxSize(-1, -1));
+    bottoneDiRicerca = new wxButton(pannello, wxID_ANY, "Cerca", wxPoint(250, 75), wxSize(-1, -1));
 
 
-    bottoneDiRicerca->Bind(wxEVT_BUTTON, &MyFrame::OnButtonSearchClick, this);
+    bottoneDiRicerca->Bind(wxEVT_BUTTON, &MyFrame::onButtonSearchClick, this);
 
-    wxStaticText *testoSopraMese = new wxStaticText(pannello, wxID_ANY, "Mese",
+    testoSopraMese = new wxStaticText(pannello, wxID_ANY, "Mese",
                                                     wxPoint(100, 50), wxSize(-1, -1));
-    wxStaticText *testoSopraGirono = new wxStaticText(pannello, wxID_ANY, "Giorno",
+    testoSopraGiorno = new wxStaticText(pannello, wxID_ANY, "Giorno",
                                                       wxPoint(50, 50), wxSize(-1, -1));
-    wxStaticText *testoSopraAnno = new wxStaticText(pannello, wxID_ANY, "Anno",
+    testoSopraAnno = new wxStaticText(pannello, wxID_ANY, "Anno",
                                                     wxPoint(150, 50), wxSize(-1, -1));
-    //inserisco evento per cambio anno
-    sceltaAnno->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
-    sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
-    sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::OnModificaData, this);
+    //evento di controllo data collegato
+    sceltaAnno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
+    sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
+    sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
 };
 
-Registro *MyFrame::GetRegisterAddress() {
-    return registroAttivita;
-};
 
-//funzione del bottone che cerca il giorno
-void MyFrame::OnButtonSearchClick(wxCommandEvent &evt) {
-    int giornoSelezionato = sceltaGiorno->GetValue();// Prende i valori per compattare la data
-    int meseSelezionato = sceltaMese->GetValue();
-    int annoSelezionato = sceltaAnno->GetValue();
-    GiornoDelCalendario dataDiRicerca(giornoSelezionato, meseSelezionato,annoSelezionato);
-    FrameSecondario *secondaFinestra = new FrameSecondario("Finestra Secondaria", registroAttivita,
-                                                           dataDiRicerca);
+//funzione del bottone che cerca il giorno e apre la prossima finestra
+void MyFrame::onButtonSearchClick(wxCommandEvent &evt) {
+    GiornoDelCalendario dataDiRicerca(sceltaGiorno->GetValue(), sceltaMese->GetValue(),sceltaAnno->GetValue());
+    FrameSecondario *secondaFinestra = new FrameSecondario("Elenco attivita", registroAttivita, dataDiRicerca);
     secondaFinestra->SetClientSize(800, 600);
     secondaFinestra->Center();
     secondaFinestra->Show();
 }
-
-void MyFrame::OnModificaData(wxCommandEvent &evt) {
+//evento di controllo data
+void MyFrame::onModificaData(wxCommandEvent &evt) {
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
     switch (meseSelezionato) {
         case 2:
-            if (IsBisestile(annoSelezionato))
+            if (isBisestile(annoSelezionato))
                 sceltaGiorno->SetRange(1, 29);
             else
                 sceltaGiorno->SetRange(1, 28);

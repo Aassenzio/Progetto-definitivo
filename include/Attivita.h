@@ -2,33 +2,31 @@
 #ifndef PROGETTODEFINITIVO_ATTIVITA_H
 #define PROGETTODEFINITIVO_ATTIVITA_H
 
-#include "Orario.h"
 #include <iostream>
-#include <string>
 #include <wx/wx.h>
 #include "GiornoDelCalendario.h"
+#include "Orario.h"
 
 class Attivita {
 public:
     Attivita(wxString nome, GiornoDelCalendario data, int ID, wxString descrizione, Orario inizio, Orario fine);
 
-    void AggiungiDescrizione(std::string);
+    void aggiungiDescrizione(wxString);
 
-    void AggiungiNome(wxString);
+    void aggiungiNome(wxString);
 
-    wxString MostraNome()const;
+    wxString mostraNome()const;
 
-   void ShowAttivita(wxArrayString *arrayDeiNomi);
 
-    wxString MostraDescrizione()const;
+    wxString mostraDescrizione()const;
 
-    GiornoDelCalendario MostraData()const;
+    GiornoDelCalendario mostraData()const;
 
-    int MostraID()const;
+    int mostraId()const;
 
-    wxString GetOrarioStringaCompleto();
+    wxString getOrarioStringaCompleto();
 
-    wxString StampaData();
+    wxString stampaData();
 
 
 private:

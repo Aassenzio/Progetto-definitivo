@@ -14,14 +14,14 @@ class FrameSecondario : public wxFrame {
 public:
     FrameSecondario(const wxString &title, Registro *, GiornoDelCalendario);
 
-    void SetRegister(Registro *);
+    void setRegister(Registro *); //in caso di edit button
 
 
-    void OnBottoneAdd(wxCommandEvent& evt);
+    void onBottoneAdd(wxCommandEvent& evt);
 
-    void OnSelezioneRiga(wxGridEvent& evt);
+    void onSelezioneRiga(wxGridEvent& evt);
 
-    void OnBottoneElimina(wxCommandEvent& evt);
+    void onBottoneElimina(wxCommandEvent& evt);
 
 private:
     int selezioneCorrente;
