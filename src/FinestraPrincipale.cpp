@@ -1,5 +1,5 @@
 
-#include "finestra.h"
+#include "FinestraPrincipale.h"
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
 
@@ -46,9 +46,9 @@ void MyFrame::OnButtonSearchClick(wxCommandEvent &evt) {
     int giornoSelezionato = sceltaGiorno->GetValue();// Prende i valori per compattare la data
     int meseSelezionato = sceltaMese->GetValue();
     int annoSelezionato = sceltaAnno->GetValue();
-    int dataEstesaSelezionata = CompattaData(annoSelezionato, meseSelezionato, giornoSelezionato);
+    GiornoDelCalendario dataDiRicerca(giornoSelezionato, meseSelezionato,annoSelezionato);
     FrameSecondario *secondaFinestra = new FrameSecondario("Finestra Secondaria", registroAttivita,
-                                                           dataEstesaSelezionata);
+                                                           dataDiRicerca);
     secondaFinestra->SetClientSize(800, 600);
     secondaFinestra->Center();
     secondaFinestra->Show();

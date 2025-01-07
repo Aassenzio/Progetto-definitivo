@@ -7,14 +7,15 @@ set(SOURCES ${TEST_SOURCES})
 add_executable(${BINARY} ${TEST_SOURCES}
         test1.cpp
         ../include/Orario.h
-        ../include/finestra.h
+        ../include/FinestraPrincipale.h
         ../include/app.h
-        ../include/Data.h
         ../include/Utility.h
         ../include/Attivita.h
         ../include/Registro.h
         ../include/FinestraDiModifica.h
         ../include/FinestraDiAggiunta.h
+        ../include/GiornoDelCalendario.h
+        test2.cpp
 
 )
 

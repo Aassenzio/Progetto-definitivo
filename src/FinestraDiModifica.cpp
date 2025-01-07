@@ -1,7 +1,7 @@
 #include "FinestraDiModifica.h"
 
 
-FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, int data) : wxFrame(nullptr, wxID_ANY,
+FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, GiornoDelCalendario data) : wxFrame(nullptr, wxID_ANY,
                                                                                                 title),
                                                                                         registroAttivita(registro),
                                                                                         dataDiRicerca(data),
@@ -43,9 +43,6 @@ void FrameSecondario::SetRegister(Registro *registro) {
     registroAttivita = registro;
 }
 
-void FrameSecondario::SetDataDiRicerca(int data) {
-    dataDiRicerca = data;
-}
 
 void FrameSecondario::OnBottoneAdd(wxCommandEvent &evt) {
     FinestraDiAggiunta *finestraDiAggiunta = new FinestraDiAggiunta("Aggiungi Attivita", registroAttivita,

@@ -6,26 +6,29 @@
 #include <iostream>
 #include <string>
 #include <wx/wx.h>
+#include "GiornoDelCalendario.h"
 
 class Attivita {
 public:
-    Attivita(wxString nome, int data, int ID, wxString descrizione, Orario inizio, Orario fine);
+    Attivita(wxString nome, GiornoDelCalendario data, int ID, wxString descrizione, Orario inizio, Orario fine);
 
     void AggiungiDescrizione(std::string);
 
     void AggiungiNome(wxString);
 
-    wxString MostraNome();
+    wxString MostraNome()const;
 
-    void ShowAttivita(wxArrayString *arrayDeiNomi);
+   void ShowAttivita(wxArrayString *arrayDeiNomi);
 
-    wxString MostraDescrizione();
+    wxString MostraDescrizione()const;
 
-    int MostraData();
+    GiornoDelCalendario MostraData()const;
 
-    int MostraID();
+    int MostraID()const;
 
     wxString GetOrarioStringaCompleto();
+
+    wxString StampaData();
 
 
 private:
@@ -33,7 +36,7 @@ private:
     Orario fineAtt;
     wxString descrizione;
     wxString nome;
-    int data;
+    GiornoDelCalendario data;
     int ID;
 };
 

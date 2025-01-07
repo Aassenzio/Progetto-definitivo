@@ -2,8 +2,7 @@
 #include "Orario.h"
 #include <wx/wx.h>
 #include "app.h"
-#include "finestra.h"
-#include "Data.h"
+#include "FinestraPrincipale.h"
 
 wxIMPLEMENT_APP(App);
 bool::App::OnInit(){
@@ -13,8 +12,3 @@ bool::App::OnInit(){
     myFrame->Show();
     return true;
 }
-/*int main(){
-
-}*/
-// Created by Igor on 4/24/2024.
-//

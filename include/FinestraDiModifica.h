@@ -7,16 +7,15 @@
 #include <wx/grid.h>
 #include "Utility.h"
 #include "Registro.h"
-#include "Finestra.h"
+#include "FinestraPrincipale.h"
 #include "FinestraDiAggiunta.h"
 
 class FrameSecondario : public wxFrame {
 public:
-    FrameSecondario(const wxString &title, Registro *, int);
+    FrameSecondario(const wxString &title, Registro *, GiornoDelCalendario);
 
     void SetRegister(Registro *);
 
-    void SetDataDiRicerca(int);
 
     void OnBottoneAdd(wxCommandEvent& evt);
 
@@ -26,7 +25,7 @@ public:
 
 private:
     int selezioneCorrente;
-    int dataDiRicerca;
+    GiornoDelCalendario dataDiRicerca;
     wxGrid *grigliaAttivita;
     Registro *registroAttivita;
     wxPanel *pannelloSecondario;

@@ -7,7 +7,7 @@
 
 class FinestraDiAggiunta : public wxFrame {
 public:
-    FinestraDiAggiunta(const wxString &title, Registro *registro, int dataDaAggiungere);
+    FinestraDiAggiunta(const wxString &title, Registro *registro, GiornoDelCalendario dataDaAggiungere);
 
     void OnBottoneSave(wxCommandEvent &evt);
 
@@ -26,7 +26,7 @@ private:
     wxSpinCtrl *oraFine;
     wxSpinCtrl *minutoInizio;
     wxSpinCtrl *minutoFine;
-    int dataAttivitaDaAggiungere;
+    GiornoDelCalendario dataAttivitaDaAggiungere;
 };
 
 

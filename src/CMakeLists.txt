@@ -8,13 +8,13 @@ add_executable(${BINARY}_run ${SOURCES})
 
 add_executable(ProgettoDefinitivo main.cpp
         Orario.cpp
-        finestra.cpp
-        data.cpp
+        FinestraPrincipale.cpp
         Utility.cpp
         Attivita.cpp
         Registro.cpp
         FinestraDiModifica.cpp
         FinestraDiAggiunta.cpp
+        GiornoDelCalendario.cpp
 )
 
 add_library(${BINARY}_lib STATIC ${SOURCES})

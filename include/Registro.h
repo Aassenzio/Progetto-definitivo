@@ -6,7 +6,6 @@
 #include<wx/wx.h>
 #include<wx/grid.h>
 #include <wx/spinctrl.h>
-#include "Data.h"
 #include "Attivita.h"
 
 class Registro {
@@ -14,11 +13,11 @@ public:
 
     Registro();
 
-    void searchDate(int data, wxGrid *listaDiQualcosa);
+    void searchDate(GiornoDelCalendario data, wxGrid *listaDiQualcosa);
 
     int GetAbsCounter();
 
-    void AddAttivita(wxString nome, int data, wxString descrizione, Orario inizio, Orario fine);
+    void AddAttivita(wxString nome, GiornoDelCalendario data, wxString descrizione, Orario inizio, Orario fine);
 
     void EliminaAttivita(int ID);
 

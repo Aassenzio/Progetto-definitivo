@@ -1,6 +1,6 @@
 #include "FinestraDiAggiunta.h"
 
-FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro, int data) : wxFrame(nullptr, wxID_ANY,
+FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro, GiornoDelCalendario data) : wxFrame(nullptr, wxID_ANY,
                                                                                                       title),
                                                                                               registroAttivita(
                                                                                                       registro),
