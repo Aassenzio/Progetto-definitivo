@@ -5,7 +5,7 @@
 #include <wx/spinctrl.h>
 #include "Utility.h"
 #include "Registro.h"
-#include "FinestraDiModifica.h"
+#include "FinestraVisualizzaGriglia.h"
 #include "GiornoDelCalendario.h"
 class MyFrame : public wxFrame {
 public:

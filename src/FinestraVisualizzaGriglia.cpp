@@ -1,4 +1,4 @@
-#include "FinestraDiModifica.h"
+#include "FinestraVisualizzaGriglia.h"
 
 
 FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, GiornoDelCalendario data) : wxFrame(nullptr, wxID_ANY,

@@ -1,22 +1,11 @@
 #include "FinestraDiAggiunta.h"
 
-FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro, GiornoDelCalendario data) : wxFrame(nullptr, wxID_ANY,
-                                                                                                      title),
-                                                                                              registroAttivita(
-                                                                                                      registro),
-                                                                                              dataAttivitaDaAggiungere(
-                                                                                                      data),
-                                                                                              testoNome(nullptr),
-                                                                                              testoDescrizione(nullptr),
-                                                                                              bottoneSalvaNuovaAttivita(
-                                                                                                      nullptr),
-                                                                                              pannelloFinestraAggiunta(
-                                                                                                      nullptr),
-                                                                                              oraFine(nullptr),
-                                                                                              oraInizio(nullptr),
-                                                                                              bottoneAnnulla(nullptr),
-                                                                                              minutoFine(nullptr),
-                                                                                              minutoInizio(nullptr) {
+FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro, GiornoDelCalendario data) :
+                                      wxFrame(nullptr, wxID_ANY,title),registroAttivita(registro),
+                                      dataAttivitaDaAggiungere(data),testoNome(nullptr),testoDescrizione(nullptr),
+                                      bottoneSalvaNuovaAttivita(nullptr),pannelloFinestraAggiunta(nullptr),
+                                      oraFine(nullptr),oraInizio(nullptr),bottoneAnnulla(nullptr),minutoFine(nullptr),
+                                      minutoInizio(nullptr) {
     pannelloFinestraAggiunta = new wxPanel(this);
     wxStaticText *sopraNome = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Nome", wxPoint(50, 30),
                                                wxSize(-1, -1));
@@ -74,7 +63,7 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro
     minutoInizio->Bind(wxEVT_SPINCTRL, &FinestraDiAggiunta::onCambioOra, this);
 
 };
-
+//evento associato al tasto salva che prende i parametri inseriti e li aggiunge al registro
 void FinestraDiAggiunta::onBottoneSave(wxCommandEvent &evt) {
     wxString nuovaDescrizione = testoDescrizione->GetLineText(0);
     Orario orarioInizioAttivita(oraInizio->GetValue(), minutoInizio->GetValue());
@@ -88,7 +77,7 @@ void FinestraDiAggiunta::onBottoneSave(wxCommandEvent &evt) {
 void FinestraDiAggiunta::onBottoneAnnulla(wxCommandEvent &evt) {
     this->Close();
 }
-
+//funzione che controlla dinamicamente che l'orario inserito di fine attivita non sia antecendente all'orario di inizio
 void FinestraDiAggiunta::onCambioOra(wxCommandEvent &evt) {
     oraFine->SetRange(oraInizio->GetValue(), 23);
     if (oraInizio->GetValue() == oraFine->GetValue()) {

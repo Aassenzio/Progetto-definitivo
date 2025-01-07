@@ -11,9 +11,9 @@ class Attivita {
 public:
     Attivita(wxString nome, GiornoDelCalendario data, int ID, wxString descrizione, Orario inizio, Orario fine);
 
-    void aggiungiDescrizione(wxString);
+    void aggiungiDescrizione(wxString); //In caso di edit
 
-    void aggiungiNome(wxString);
+    void aggiungiNome(wxString); //In caso di edit
 
     wxString mostraNome()const;
 

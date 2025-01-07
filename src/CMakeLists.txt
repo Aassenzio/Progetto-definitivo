@@ -12,7 +12,7 @@ add_executable(ProgettoDefinitivo main.cpp
         Utility.cpp
         Attivita.cpp
         Registro.cpp
-        FinestraDiModifica.cpp
+        FinestraVisualizzaGriglia.cpp
         FinestraDiAggiunta.cpp
         GiornoDelCalendario.cpp
 )

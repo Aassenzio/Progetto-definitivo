@@ -1,10 +1,11 @@
 #include "Registro.h"
 
-Registro::Registro(): contatoreAssoluto(0){}
+Registro::Registro(): contatoreAssoluto(0){}//il contatore assoluto inizalizzato a 0 va solo avanti anche in caso di eliminazione
+//se vuoi non perdere la posizione puoi levare il vettore e implementare una map
 void Registro::searchDate(GiornoDelCalendario dataCercata, wxGrid *griglia) {
     int contatoreRighe = 0;
     for (int iter = 0; iter < contatoreAssoluto; iter++) {
-        if(!vettoreAttivita[iter]) {}
+        if(!vettoreAttivita[iter]) {} // in caso non ci sia nulla in questa posizione salta l'iterazione
         else{
             if ((vettoreAttivita[iter]->mostraData()).comparaData(dataCercata)) {
                 griglia->AppendRows(1);
