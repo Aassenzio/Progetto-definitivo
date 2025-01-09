@@ -16,6 +16,7 @@ int GiornoDelCalendario::getGiorno() const {
 
 bool GiornoDelCalendario::comparaData(GiornoDelCalendario dataDaComparare) {
     if(dataDaComparare.getGiorno() == giorno && dataDaComparare.getMese() == mese && dataDaComparare.getAnno() == anno){
-        return true; }
+        return true;
+    }
     else return false ;
 }

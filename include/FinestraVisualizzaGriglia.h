@@ -5,7 +5,7 @@
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
 #include <wx/grid.h>
-#include "Utility.h"
+#include "ControlloAnno.h"
 #include "Registro.h"
 #include "FinestraPrincipale.h"
 #include "FinestraDiAggiunta.h"
@@ -16,7 +16,7 @@ public:
 
     void setRegister(Registro *); //in caso di edit button
 
-
+    //funzioni dei vari bottoni dichiarate nel file .cpp
     void onBottoneAdd(wxCommandEvent& evt);
 
     void onSelezioneRiga(wxGridEvent& evt);

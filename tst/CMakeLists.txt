@@ -9,13 +9,15 @@ add_executable(${BINARY} ${TEST_SOURCES}
         ../include/Orario.h
         ../include/FinestraPrincipale.h
         ../include/app.h
-        ../include/Utility.h
+        ../include/ControlloAnno.h
         ../include/Attivita.h
         ../include/Registro.h
         ../include/FinestraVisualizzaGriglia.h
         ../include/FinestraDiAggiunta.h
         ../include/GiornoDelCalendario.h
         test2.cpp
+        test3.cpp
+        test3.cpp
 
 )
 

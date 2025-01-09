@@ -1,9 +1,10 @@
 
 #ifndef PROGETTODEFINITIVO_FINESTRAPRINCIPALE_H
 #define PROGETTODEFINITIVO_FINESTRAPRINCIPALE_H
+#include <ctime>
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
-#include "Utility.h"
+#include "ControlloAnno.h"
 #include "Registro.h"
 #include "FinestraVisualizzaGriglia.h"
 #include "GiornoDelCalendario.h"

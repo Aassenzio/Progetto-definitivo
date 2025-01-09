@@ -8,39 +8,38 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, Gior
                                                                                         selezioneCorrente(0),
                                                                                         grigliaAttivita(nullptr),
                                                                                         bottoneAddAttivita(nullptr),
-                                                                                        bottoneEliminaAttivita(nullptr){
+                                                                                        bottoneEliminaAttivita(nullptr),
+                                                                                        pannelloSecondario(nullptr){
     pannelloSecondario = new wxPanel(this);
-    if (!grigliaAttivita) {  //griglia con i vari campi delle attivita
-        grigliaAttivita = new wxGrid(pannelloSecondario, wxID_ANY, wxPoint(25, 25), wxSize(700, 400));
-        grigliaAttivita->CreateGrid(0, 5);
-        grigliaAttivita->HideCol(0);
-        grigliaAttivita->SetColLabelValue(1, "Nome");
-        grigliaAttivita->SetColLabelValue(2, "Data");
-        grigliaAttivita->SetColLabelValue(3, "Orario inizio/fine");
-        grigliaAttivita->SetColLabelValue(4, "Descrizione");
-        grigliaAttivita->SetSelectionMode(wxGrid::wxGridSelectRows);
-        grigliaAttivita->EnableEditing(false);
-        grigliaAttivita->SetColSize(1, 90);
-        grigliaAttivita->SetColSize(2, 70);
-        grigliaAttivita->SetColSize(3, 150);
-        grigliaAttivita->SetColSize(4, 300);
-    }
+    //griglia con i vari campi delle attivita
+    grigliaAttivita = new wxGrid(pannelloSecondario, wxID_ANY, wxPoint(25, 25), wxSize(700, 400));
+    grigliaAttivita->CreateGrid(0, 5);
+    grigliaAttivita->HideCol(0); //colonna per conservare il numero ID dell attivita
+    grigliaAttivita->SetColLabelValue(1, "Nome");
+    grigliaAttivita->SetColLabelValue(2, "Data");
+    grigliaAttivita->SetColLabelValue(3, "Orario inizio/fine");
+    grigliaAttivita->SetColLabelValue(4, "Descrizione");
+    grigliaAttivita->SetSelectionMode(wxGrid::wxGridSelectRows);
+    grigliaAttivita->EnableEditing(false);
+    grigliaAttivita->SetColSize(1, 90);
+    grigliaAttivita->SetColSize(2, 70);
+    grigliaAttivita->SetColSize(3, 150);
+    grigliaAttivita->SetColSize(4, 300);
+
     registroAttivita->searchDate(dataDiRicerca, grigliaAttivita);
-    if (!bottoneAddAttivita) {
-        bottoneAddAttivita = new wxButton(pannelloSecondario, wxID_ANY, "Aggiungi Attivita", wxPoint(650, 475),
-                                          wxSize(100, 25));
-    }
-    if(!bottoneEliminaAttivita) {
-        bottoneEliminaAttivita = new wxButton(pannelloSecondario, wxID_ANY, "Elimina Attivita", wxPoint(650, 525));
-    }
-    bottoneEliminaAttivita->Disable();
+
+    bottoneAddAttivita = new wxButton(pannelloSecondario, wxID_ANY, "Aggiungi Attivita", wxPoint(650, 475),wxSize(100, 25));
+    bottoneEliminaAttivita = new wxButton(pannelloSecondario, wxID_ANY, "Elimina Attivita", wxPoint(650, 525));
+    bottoneEliminaAttivita->Disable(); //bottone elimina disattiviato finche non avviene selezione
+
+
     bottoneAddAttivita->Bind(wxEVT_BUTTON, &FrameSecondario::onBottoneAdd, this);
     grigliaAttivita->Bind(wxEVT_GRID_SELECT_CELL, &FrameSecondario::onSelezioneRiga, this);
     bottoneEliminaAttivita->Bind(wxEVT_BUTTON, &FrameSecondario::onBottoneElimina, this);
 }
 
 
-
+// funzione collegata al pulsante aggiungi attivita
 void FrameSecondario::onBottoneAdd(wxCommandEvent &evt) {
     FinestraDiAggiunta *finestraDiAggiunta = new FinestraDiAggiunta("Aggiungi Attivita", registroAttivita,
                                                                     dataDiRicerca);
@@ -49,16 +48,17 @@ void FrameSecondario::onBottoneAdd(wxCommandEvent &evt) {
     finestraDiAggiunta->Show();
     this->Close();
 }
-
+//funzione che elimina l'attivita selezionata
 void FrameSecondario::onBottoneElimina(wxCommandEvent &evt) {
     registroAttivita->eliminaAttivita(selezioneCorrente);
     wxMessageBox("Attivita eliminata correttamente", "Conferma Eliminazione", wxOK | wxICON_INFORMATION, this);
     this->Close();
 }
-
+ //funzione che controlla la selezione e attiva il tasto elimina
 void FrameSecondario::onSelezioneRiga(wxGridEvent &evt) {
     wxString ID = grigliaAttivita->GetCellValue(evt.GetRow(),0);
+    if(wxAtoi(ID)>= 0){
     selezioneCorrente = wxAtoi(ID);
     bottoneEliminaAttivita->Enable();
-
+    }
 }

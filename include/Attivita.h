@@ -24,9 +24,11 @@ public:
 
     int mostraId()const;
 
-    wxString getOrarioStringaCompleto();
+    wxString mostraOrarioStringaCompleto();
 
     wxString stampaData();
+
+    int getNumeroRigheDescrizione();
 
 
 private:

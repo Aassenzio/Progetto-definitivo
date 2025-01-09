@@ -27,7 +27,7 @@ wxString Attivita::mostraDescrizione()const {
 
 
 
-wxString Attivita::getOrarioStringaCompleto() {
+wxString Attivita::mostraOrarioStringaCompleto() {
     wxString orarioInizioStringa = inizioAtt.getOrarioStringa();
     wxString orarioFineStringa = fineAtt.getOrarioStringa();
     wxString orarioStringaFinale = "Inizio " + orarioInizioStringa + " Fine " + orarioFineStringa;
@@ -37,4 +37,14 @@ wxString Attivita::getOrarioStringaCompleto() {
 wxString Attivita::stampaData() {
     wxString stringaData = wxString::Format(wxT("%i/%i/%i"), data.getGiorno(), data.getMese(), data.getAnno());
     return stringaData;
+}
+
+int Attivita::getNumeroRigheDescrizione() {
+    int contatoreLinee = 1;
+    for (size_t iter = 0; iter < descrizione.length(); ++iter) {
+        if (descrizione[iter] == '\n') {
+            contatoreLinee++;
+        }
+    }
+    return contatoreLinee;
 }

@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Orario.h"
 #include <wx/wx.h>
 #include "app.h"
 #include "FinestraPrincipale.h"
