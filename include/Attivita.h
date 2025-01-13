@@ -24,11 +24,11 @@ public:
 
     int getId()const;
 
-    wxString getOrarioStringaCompleto();
+    wxString getOrarioStringaCompleto() ;
 
-    wxString getStringaData();
+    wxString getStringaData()const;
 
-    int getNumeroRigheDescrizione();
+    int getNumeroRigheDescrizione ()const;
 
 
 private:

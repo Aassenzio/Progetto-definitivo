@@ -12,7 +12,7 @@ public:
 
     int getAnno()const;
 
-    bool comparaData(GiornoDelCalendario dataDaComparare);
+    bool comparaData(GiornoDelCalendario dataDaComparare)const;
 
 private:
     int giorno;

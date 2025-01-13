@@ -34,12 +34,12 @@ wxString Attivita::getOrarioStringaCompleto() {
     return orarioStringaFinale;
 }
 
-wxString Attivita::getStringaData() {
+wxString Attivita::getStringaData()const {
     wxString stringaData = wxString::Format(wxT("%i/%i/%i"), data.getGiorno(), data.getMese(), data.getAnno());
     return stringaData;
 }
 
-int Attivita::getNumeroRigheDescrizione() {
+int Attivita::getNumeroRigheDescrizione() const{
     int contatoreLinee = 1;
     for (size_t iter = 0; iter < descrizione.length(); ++iter) {
         if (descrizione[iter] == '\n') {
