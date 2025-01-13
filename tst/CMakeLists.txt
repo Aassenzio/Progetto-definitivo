@@ -8,7 +8,7 @@ add_executable(${BINARY} ${TEST_SOURCES}
         testComparaDataTrue.cpp
         ../include/Orario.h
         ../include/FinestraPrincipale.h
-        ../include/app.h
+        ../include/App.h
         ../include/Attivita.h
         ../include/Registro.h
         ../include/FinestraVisualizzaGriglia.h

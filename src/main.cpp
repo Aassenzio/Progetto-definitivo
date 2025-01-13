@@ -1,6 +1,6 @@
 #include <iostream>
 #include <wx/wx.h>
-#include "app.h"
+#include "App.h"
 #include "FinestraPrincipale.h"
 
 wxIMPLEMENT_APP(App);
