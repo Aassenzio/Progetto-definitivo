@@ -1,6 +1,33 @@
 #include "GiornoDelCalendario.h"
 
-GiornoDelCalendario::GiornoDelCalendario(int giorno, int mese, int anno) : giorno(giorno), mese(mese), anno(anno){};
+GiornoDelCalendario::GiornoDelCalendario(int giorno, int mese, int anno) : giorno(giorno), mese(mese), anno(anno){
+
+    if(giorno>31 || mese> 12){
+        throw std::invalid_argument("Giorno o mese invalido");
+    }
+    switch (mese) {
+            case 2:
+                if (isBisestile(anno) && giorno>29){
+                    throw std::invalid_argument("Febbraio ha 29 giorni");
+                }
+                else {
+                    if (giorno > 28)
+                        throw std::invalid_argument("Febbraio ha 28 giorni");
+                }
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                if(giorno > 30) {
+                    throw std::invalid_argument("Il mese selezionato ha 30 giorni");
+                }
+                break;
+            default:
+                break;
+    }
+
+}
 
 int GiornoDelCalendario::getAnno() const {
     return anno;

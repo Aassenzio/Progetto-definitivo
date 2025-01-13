@@ -5,7 +5,6 @@
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
 #include <wx/grid.h>
-#include "ControlloAnno.h"
 #include "Registro.h"
 #include "FinestraPrincipale.h"
 #include "FinestraDiAggiunta.h"

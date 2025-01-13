@@ -62,11 +62,16 @@ MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) ,reg
 
 //funzione del bottone che cerca il giorno e apre la prossima finestra
 void MyFrame::onButtonSearchClick(wxCommandEvent &evt) {
-    GiornoDelCalendario dataDiRicerca(sceltaGiorno->GetValue(), sceltaMese->GetValue(),sceltaAnno->GetValue());
-    FrameSecondario *secondaFinestra = new FrameSecondario("Elenco attivita", registroAttivita, dataDiRicerca);
-    secondaFinestra->SetClientSize(800, 600);
-    secondaFinestra->Center();
-    secondaFinestra->Show();
+    try {
+        GiornoDelCalendario dataDiRicerca(sceltaGiorno->GetValue(), sceltaMese->GetValue(), sceltaAnno->GetValue());
+        FrameSecondario *secondaFinestra = new FrameSecondario("Elenco attivita", registroAttivita, dataDiRicerca);
+        secondaFinestra->SetClientSize(800, 600);
+        secondaFinestra->Center();
+        secondaFinestra->Show();
+    }
+    catch (const std::invalid_argument& e){
+        wxMessageBox(wxString(e.what()), "Errore", wxOK | wxICON_ERROR, this);
+    };
 }
 //evento di controllo data
 void MyFrame::onModificaData(wxCommandEvent &evt) {

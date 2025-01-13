@@ -9,7 +9,6 @@ add_executable(${BINARY} ${TEST_SOURCES}
         ../include/Orario.h
         ../include/FinestraPrincipale.h
         ../include/app.h
-        ../include/ControlloAnno.h
         ../include/Attivita.h
         ../include/Registro.h
         ../include/FinestraVisualizzaGriglia.h

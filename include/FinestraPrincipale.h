@@ -4,7 +4,6 @@
 #include <ctime>
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
-#include "ControlloAnno.h"
 #include "Registro.h"
 #include "FinestraVisualizzaGriglia.h"
 #include "GiornoDelCalendario.h"

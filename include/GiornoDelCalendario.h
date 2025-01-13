@@ -1,6 +1,7 @@
 
 #ifndef PROGETTODEFINITIVO_GIORNODELCALENDARIO_H
 #define PROGETTODEFINITIVO_GIORNODELCALENDARIO_H
+#include <stdexcept>
 
 class GiornoDelCalendario{
 public:
