@@ -5,6 +5,5 @@
 //#include "Registro.h"
 
 //funzione che controlla i bisesitili
-bool isBisestile(int annoSelezionato);
 
 #endif //PROGETTODEFINITIVO_CONTROLLOANNO_H

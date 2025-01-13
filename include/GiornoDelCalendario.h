@@ -12,7 +12,9 @@ public:
 
     int getAnno()const;
 
-    bool comparaData(GiornoDelCalendario dataDaComparare)const;
+    bool operator==(const GiornoDelCalendario& other)const;
+
+    static bool isBisestile(int anno);
 
 private:
     int giorno;

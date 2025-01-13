@@ -7,7 +7,7 @@ int Registro::searchDate(GiornoDelCalendario dataCercata, std::vector<Attivita*>
     int contatoreTrovati = 0;
     for (int iter = 0; iter < contatoreAssoluto; iter++) {
         if(vettoreAttivita[iter]) { // in caso non ci sia nulla in questa posizione salta l'iterazione
-        if ((vettoreAttivita[iter]->getData()).comparaData(dataCercata)) {
+        if ((vettoreAttivita[iter]->getData())==dataCercata) {
             listaTrovati->push_back(vettoreAttivita[iter]);
             contatoreTrovati++;
             }

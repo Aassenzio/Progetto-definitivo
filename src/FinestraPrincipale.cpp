@@ -74,7 +74,7 @@ void MyFrame::onModificaData(wxCommandEvent &evt) {
     int annoSelezionato = sceltaAnno->GetValue();
     switch (meseSelezionato) {
         case 2:
-            if (isBisestile(annoSelezionato))
+            if (GiornoDelCalendario::isBisestile(annoSelezionato))
                 sceltaGiorno->SetRange(1, 29);
             else
                 sceltaGiorno->SetRange(1, 28);

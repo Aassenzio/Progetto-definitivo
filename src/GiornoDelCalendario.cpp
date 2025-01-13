@@ -13,10 +13,15 @@ int GiornoDelCalendario::getMese() const {
 int GiornoDelCalendario::getGiorno() const {
     return giorno;
 }
-
-bool GiornoDelCalendario::comparaData(GiornoDelCalendario dataDaComparare)const {
+bool GiornoDelCalendario::operator==(const GiornoDelCalendario &dataDaComparare) const {
     if(dataDaComparare.getGiorno() == giorno && dataDaComparare.getMese() == mese && dataDaComparare.getAnno() == anno){
         return true;
     }
-    else return false ;
+            else return false ;
+}
+
+bool GiornoDelCalendario::isBisestile(int annoSelezionato) {
+    if (annoSelezionato % 4 == 0 && (annoSelezionato % 100 != 0 || annoSelezionato % 400 == 0) )
+        return true;
+    else return false;
 }
