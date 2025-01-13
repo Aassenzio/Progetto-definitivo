@@ -9,7 +9,8 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, Gior
                                                                                         grigliaAttivita(nullptr),
                                                                                         bottoneAddAttivita(nullptr),
                                                                                         bottoneEliminaAttivita(nullptr),
-                                                                                        pannelloSecondario(nullptr) {
+                                                                                        pannelloSecondario(nullptr),
+                                                                                        nomeDiRicerca("Inserisci il nome") {
     pannelloSecondario = new wxPanel(this);
     //griglia con i vari campi delle attivita
     grigliaAttivita = new wxGrid(pannelloSecondario, wxID_ANY, wxPoint(25, 25), wxSize(700, 400));
@@ -54,7 +55,7 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, Gior
 
 FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, std::string nome) : wxFrame(nullptr, wxID_ANY,
                                                                                                         title),
-                                    registroAttivita(registro),dataDiRicerca(1,1,2000),selezioneCorrente(0),grigliaAttivita(nullptr),
+                                    registroAttivita(registro),dataDiRicerca(1,1,2025),selezioneCorrente(0),grigliaAttivita(nullptr),
                                     bottoneAddAttivita(nullptr),bottoneEliminaAttivita(nullptr),pannelloSecondario(nullptr),
                                     nomeDiRicerca(nome){
     pannelloSecondario = new wxPanel(this);
@@ -102,8 +103,8 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, std:
 // funzione collegata al pulsante aggiungi attivita
 void FrameSecondario::onBottoneAdd(wxCommandEvent &evt) {
     FinestraDiAggiunta *finestraDiAggiunta = new FinestraDiAggiunta("Aggiungi Attivita", registroAttivita,
-                                                                    dataDiRicerca);
-    finestraDiAggiunta->SetClientSize(475, 375);
+                                                                    dataDiRicerca , nomeDiRicerca);
+    finestraDiAggiunta->SetClientSize(475, 400);
     finestraDiAggiunta->Center();
     finestraDiAggiunta->Show();
     this->Close();

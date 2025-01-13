@@ -41,13 +41,13 @@ MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) , re
     sceltaAnno->SetValue(todayAnno);
 
 
-    bottoneDiRicercaData = new wxButton(pannello, wxID_ANY, "Cerca", wxPoint(250, 75), wxSize(-1, -1));
+    bottoneDiRicercaData = new wxButton(pannello, wxID_ANY, "Cerca Data", wxPoint(250, 75), wxSize(-1, -1));
 
 
     bottoneDiRicercaData->Bind(wxEVT_BUTTON, &MyFrame::onButtonSearchDateClick, this);
 
 
-    bottoneDiRicercaNome = new wxButton(pannello, wxID_ANY, "Cerca", wxPoint(250, 125), wxSize(-1, -1));
+    bottoneDiRicercaNome = new wxButton(pannello, wxID_ANY, "Cerca Nome", wxPoint(250, 125), wxSize(-1, -1));
     casellaRicercaNome = new wxTextCtrl(pannello, wxID_ANY, "Nome", wxPoint(50,125),wxSize(150, 25));
 
     bottoneDiRicercaNome->Bind(wxEVT_BUTTON, &MyFrame::onButtonSearchNameClick,this);
