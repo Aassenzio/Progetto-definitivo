@@ -63,6 +63,7 @@ MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) , re
     sceltaAnno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
     sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
     sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
+
 };
 
 
