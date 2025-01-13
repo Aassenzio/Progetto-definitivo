@@ -5,9 +5,10 @@
 #include <wx/file.h>
 #include "FinestraPrincipale.h"
 
-MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) ,registroAttivita(nullptr), sceltaGiorno(nullptr),
-                                        sceltaMese(nullptr), sceltaAnno(nullptr), bottoneDiRicerca(nullptr), pannello(nullptr),
-                                        testoSopraAnno(nullptr), testoSopraGiorno(nullptr), testoSopraMese(nullptr){
+MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) , registroAttivita(nullptr), sceltaGiorno(nullptr),
+                                          sceltaMese(nullptr), sceltaAnno(nullptr), bottoneDiRicercaData(nullptr), pannello(nullptr),
+                                          testoSopraAnno(nullptr), testoSopraGiorno(nullptr), testoSopraMese(nullptr),
+                                          bottoneDiRicercaNome(nullptr), casellaRicercaNome(nullptr){
 
     pannello = new wxPanel(this);
 
@@ -40,11 +41,16 @@ MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) ,reg
     sceltaAnno->SetValue(todayAnno);
 
 
-    bottoneDiRicerca = new wxButton(pannello, wxID_ANY, "Cerca", wxPoint(250, 75), wxSize(-1, -1));
+    bottoneDiRicercaData = new wxButton(pannello, wxID_ANY, "Cerca", wxPoint(250, 75), wxSize(-1, -1));
 
 
-    bottoneDiRicerca->Bind(wxEVT_BUTTON, &MyFrame::onButtonSearchClick, this);
+    bottoneDiRicercaData->Bind(wxEVT_BUTTON, &MyFrame::onButtonSearchDateClick, this);
 
+
+    bottoneDiRicercaNome = new wxButton(pannello, wxID_ANY, "Cerca", wxPoint(250, 125), wxSize(-1, -1));
+    casellaRicercaNome = new wxTextCtrl(pannello, wxID_ANY, "Nome", wxPoint(50,125),wxSize(150, 25));
+
+    bottoneDiRicercaNome->Bind(wxEVT_BUTTON, &MyFrame::onButtonSearchNameClick,this);
 
     testoSopraMese = new wxStaticText(pannello, wxID_ANY, "Mese",
                                                     wxPoint(100, 50), wxSize(-1, -1));
@@ -61,7 +67,7 @@ MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) ,reg
 
 
 //funzione del bottone che cerca il giorno e apre la prossima finestra
-void MyFrame::onButtonSearchClick(wxCommandEvent &evt) {
+void MyFrame::onButtonSearchDateClick(wxCommandEvent &evt) {
     try {
         GiornoDelCalendario dataDiRicerca(sceltaGiorno->GetValue(), sceltaMese->GetValue(), sceltaAnno->GetValue());
         FrameSecondario *secondaFinestra = new FrameSecondario("Elenco attivita", registroAttivita, dataDiRicerca);
@@ -72,6 +78,15 @@ void MyFrame::onButtonSearchClick(wxCommandEvent &evt) {
     catch (const std::invalid_argument& e){
         wxMessageBox(wxString(e.what()), "Errore", wxOK | wxICON_ERROR, this);
     };
+}
+
+void MyFrame::onButtonSearchNameClick(wxCommandEvent &evt){
+    std::string nomeDiRicerca;
+    nomeDiRicerca = casellaRicercaNome->GetLineText(0).ToStdString();
+    FrameSecondario *secondaFinestra = new FrameSecondario("Elenco attivita", registroAttivita, nomeDiRicerca);
+    secondaFinestra->SetClientSize(800, 600);
+    secondaFinestra->Center();
+    secondaFinestra->Show();
 }
 //evento di controllo data
 void MyFrame::onModificaData(wxCommandEvent &evt) {

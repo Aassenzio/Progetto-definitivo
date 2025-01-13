@@ -13,6 +13,8 @@ class FrameSecondario : public wxFrame {
 public:
     FrameSecondario(const wxString &title, Registro *, GiornoDelCalendario);
 
+    FrameSecondario(const wxString &title, Registro *, std::string);
+
     void setRegister(Registro *); //in caso di edit button
 
     //funzioni dei vari bottoni dichiarate nel file .cpp
@@ -24,6 +26,7 @@ public:
 
 private:
     int selezioneCorrente;
+    std::string nomeDiRicerca;
     GiornoDelCalendario dataDiRicerca;
     wxGrid *grigliaAttivita;
     Registro *registroAttivita;

@@ -13,7 +13,11 @@ public:
     int searchDate(GiornoDelCalendario data, std::vector<Attivita*> *listaTrovati);
 
 
+    int searchName(std::string nome, std::vector<Attivita*> *listaTrovati);
+
+
     void addAttivita(std::string nome, GiornoDelCalendario data, std::string descrizione, Orario inizio, Orario fine);
+
 
     void eliminaAttivita(int ID);
 

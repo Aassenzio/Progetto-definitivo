@@ -1,8 +1,9 @@
 #include "gtest/gtest.h"
+#include "GiornoDelCalendario.h"
 
+TEST(Bisestile, 2000){
 
-//TEST(Bisestile, 2000){
-    //EXPECT_EQ(true, isBisestile(2000) );
-//}
+    EXPECT_EQ(true, GiornoDelCalendario::isBisestile(2000) );
+}
 
 

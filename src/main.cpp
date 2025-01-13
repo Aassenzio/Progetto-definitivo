@@ -6,7 +6,7 @@
 wxIMPLEMENT_APP(App);
 bool::App::OnInit(){
     MyFrame* myFrame =new MyFrame("Registro Attivita");
-    myFrame->SetClientSize(390, 190);
+    myFrame->SetClientSize(390, 240);
     myFrame->Center();
     myFrame->Show();
     return true;

@@ -14,7 +14,9 @@ public:
 
 private:
 
-    void onButtonSearchClick(wxCommandEvent &evt);
+    void onButtonSearchDateClick(wxCommandEvent &evt);
+
+    void onButtonSearchNameClick(wxCommandEvent &evt);
 
     void onModificaData(wxCommandEvent &evt);
 
@@ -22,7 +24,9 @@ private:
     wxSpinCtrl *sceltaGiorno;
     wxSpinCtrl *sceltaMese ;
     wxSpinCtrl *sceltaAnno ;
-    wxButton *bottoneDiRicerca;
+    wxButton *bottoneDiRicercaData;
+    wxButton *bottoneDiRicercaNome;
+    wxTextCtrl *casellaRicercaNome;
     wxStaticText *testoDiBenvenuto;
     wxStaticText *testoSopraMese;
     wxStaticText *testoSopraGiorno;

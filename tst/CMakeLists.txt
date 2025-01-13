@@ -17,6 +17,7 @@ add_executable(${BINARY} ${TEST_SOURCES}
         test2.cpp
         test3.cpp
         test3.cpp
+        test4.cpp
 
 )
 

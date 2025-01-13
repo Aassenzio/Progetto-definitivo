@@ -16,6 +16,18 @@ int Registro::searchDate(GiornoDelCalendario dataCercata, std::vector<Attivita*>
     return contatoreTrovati;
 }
 
+int Registro::searchName(std::string nomeCercato , std::vector<Attivita*> *listaTrovati) {
+    int contatoreTrovati = 0;
+    for (int iter = 0; iter < contatoreAssoluto; iter++){
+        if(vettoreAttivita[iter]){
+            if((vettoreAttivita[iter]->getNome()).find(nomeCercato) != std::string::npos){
+                listaTrovati->push_back(vettoreAttivita[iter]);
+                contatoreTrovati++;
+            }
+        }
+    }
+return contatoreTrovati;
+}
 
 void Registro::addAttivita(std::string nome, GiornoDelCalendario data, std::string descrizione, Orario inizio,
                            Orario fine) {
