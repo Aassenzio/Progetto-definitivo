@@ -60,9 +60,9 @@ MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) , re
                                                     wxPoint(150, 50), wxSize(-1, -1));
 
     //evento di controllo data collegato
-    //sceltaAnno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
-    //sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
-    //sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
+    sceltaAnno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
+    sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
+    sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
 };
 
 
