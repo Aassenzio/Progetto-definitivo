@@ -60,9 +60,9 @@ MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) , re
                                                     wxPoint(150, 50), wxSize(-1, -1));
 
     //evento di controllo data collegato
-    sceltaAnno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
-    sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
-    sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
+    //sceltaAnno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
+    //sceltaMese->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
+    //sceltaGiorno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
 };
 
 
@@ -82,11 +82,20 @@ void MyFrame::onButtonSearchDateClick(wxCommandEvent &evt) {
 
 void MyFrame::onButtonSearchNameClick(wxCommandEvent &evt){
     std::string nomeDiRicerca;
-    nomeDiRicerca = casellaRicercaNome->GetLineText(0).ToStdString();
-    FrameSecondario *secondaFinestra = new FrameSecondario("Elenco attivita", registroAttivita, nomeDiRicerca);
-    secondaFinestra->SetClientSize(800, 600);
-    secondaFinestra->Center();
-    secondaFinestra->Show();
+    try {
+        nomeDiRicerca = casellaRicercaNome->GetLineText(0).ToStdString();
+        if(nomeDiRicerca == ""){
+            throw std::invalid_argument ("Inserisci il nome che vuoi cercare");
+        }
+        FrameSecondario *secondaFinestra = new FrameSecondario("Elenco attivita", registroAttivita, nomeDiRicerca);
+        secondaFinestra->SetClientSize(800, 600);
+        secondaFinestra->Center();
+        secondaFinestra->Show();
+    }
+    catch (const std::invalid_argument& e){
+        wxMessageBox(wxString(e.what()), "Errore", wxOK | wxICON_ERROR, this);
+    }
+
 }
 //evento di controllo data
 void MyFrame::onModificaData(wxCommandEvent &evt) {
