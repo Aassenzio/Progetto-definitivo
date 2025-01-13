@@ -13,10 +13,10 @@ public:
 
     Registro();
 
-    void searchDate(GiornoDelCalendario data, wxGrid *listaDiQualcosa);
+    int searchDate(GiornoDelCalendario data, std::vector<Attivita*> *listaTrovati);
 
 
-    void addAttivita(wxString nome, GiornoDelCalendario data, wxString descrizione, Orario inizio, Orario fine);
+    void addAttivita(std::string nome, GiornoDelCalendario data, wxString descrizione, Orario inizio, Orario fine);
 
     void eliminaAttivita(int ID);
 

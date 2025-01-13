@@ -26,7 +26,23 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, Gior
     grigliaAttivita->SetColSize(3, 150);
     grigliaAttivita->SetColSize(4, 300);
 
-    registroAttivita->searchDate(dataDiRicerca, grigliaAttivita);
+    std::vector<Attivita*> contenutoRicerca;
+    int numeroAttivitaTrovate = registroAttivita->searchDate(dataDiRicerca, &contenutoRicerca);
+    int contatoreRighe = 0;
+    for(int iter = 0; iter < numeroAttivitaTrovate; iter ++){
+
+        grigliaAttivita->AppendRows(1);
+        grigliaAttivita->SetCellValue(contatoreRighe, 0,
+                              wxString::Format(wxT("%i"), contenutoRicerca[iter]->getId()));
+        grigliaAttivita->SetCellValue(contatoreRighe, 1, wxString(contenutoRicerca[iter]->getNome()));
+        grigliaAttivita->SetCellValue(contatoreRighe, 2, wxString(contenutoRicerca[iter]->getStringaData()));
+        grigliaAttivita->SetCellValue(contatoreRighe, 3, wxString(contenutoRicerca[iter]->getOrarioStringaCompleto()));
+        grigliaAttivita->SetCellValue(contatoreRighe, 4, wxString(contenutoRicerca[iter]->getDescrizione()));
+        grigliaAttivita->SetRowSize(contatoreRighe, 17 * contenutoRicerca[iter]->getNumeroRigheDescrizione());
+        contatoreRighe++;
+    }
+
+
 
     bottoneAddAttivita = new wxButton(pannelloSecondario, wxID_ANY, "Aggiungi Attivita", wxPoint(650, 475),wxSize(100, 25));
     bottoneEliminaAttivita = new wxButton(pannelloSecondario, wxID_ANY, "Elimina Attivita", wxPoint(650, 525));

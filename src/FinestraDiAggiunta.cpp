@@ -65,7 +65,7 @@ void FinestraDiAggiunta::onBottoneSave(wxCommandEvent &evt) {
     //wxString nuovaDescrizione = testoDescrizione->GetLineText(0);
     Orario orarioInizioAttivita(oraInizio->GetValue(), minutoInizio->GetValue());
     Orario orarioFineAttivita(oraFine->GetValue(), minutoFine->GetValue());
-    registroAttivita->addAttivita(testoNome->GetLineText(0), dataAttivitaDaAggiungere, nuovaDescrizione,
+    registroAttivita->addAttivita((testoNome->GetLineText(0)).ToStdString(), dataAttivitaDaAggiungere, nuovaDescrizione,
                                   orarioInizioAttivita, orarioFineAttivita);
     wxMessageBox("L'attivita' salvata correttamente!", "Conferma Salvataggio", wxOK | wxICON_INFORMATION, this);
     this->Close();

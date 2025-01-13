@@ -3,30 +3,31 @@
 #define PROGETTODEFINITIVO_ATTIVITA_H
 
 #include <iostream>
+#include <string>
 #include <wx/wx.h>
 #include "GiornoDelCalendario.h"
 #include "Orario.h"
 
 class Attivita {
 public:
-    Attivita(wxString nome, GiornoDelCalendario data, int ID, wxString descrizione, Orario inizio, Orario fine);
+    Attivita(std::string nome, GiornoDelCalendario data, int ID, wxString descrizione, Orario inizio, Orario fine);
 
     void aggiungiDescrizione(wxString); //In caso di edit
 
     void aggiungiNome(wxString); //In caso di edit
 
-    wxString getNome()const;
+    std::string getNome()const;
 
 
-    wxString getDescrizione()const;
+    std::string getDescrizione()const;
 
     GiornoDelCalendario getData()const;
 
     int getId()const;
 
-    wxString getOrarioStringaCompleto() ;
+    std::string getOrarioStringaCompleto() ;
 
-    wxString getStringaData()const;
+    std::string getStringaData()const;
 
     int getNumeroRigheDescrizione ()const;
 
@@ -34,8 +35,8 @@ public:
 private:
     Orario inizioAtt;
     Orario fineAtt;
-    wxString descrizione;
-    wxString nome;
+    std::string descrizione;
+    std::string nome;
     GiornoDelCalendario data;
     int ID;
 };

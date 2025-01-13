@@ -1,6 +1,6 @@
 #include "Attivita.h"
 
-Attivita::Attivita(wxString nuovoNome, GiornoDelCalendario nuovaData, int ID, wxString nuovaDescrizione, Orario inizio, Orario fine) :
+Attivita::Attivita(std::string nuovoNome, GiornoDelCalendario nuovaData, int ID, wxString nuovaDescrizione, Orario inizio, Orario fine) :
         nome(nuovoNome), data(nuovaData),
         ID(ID), descrizione(nuovaDescrizione), inizioAtt(inizio), fineAtt(fine) {};
 
@@ -9,7 +9,7 @@ void Attivita::aggiungiNome(wxString nuovoNome) {
 }
 
 
-wxString Attivita::getNome()const {
+std::string Attivita::getNome()const {
     return nome;
 }
 
@@ -21,21 +21,23 @@ int Attivita::getId()const {
     return ID;
 }
 
-wxString Attivita::getDescrizione()const {
+std::string Attivita::getDescrizione()const {
     return descrizione;
 }
 
 
 
-wxString Attivita::getOrarioStringaCompleto() {
-    wxString orarioInizioStringa = inizioAtt.getOrarioStringa();
-    wxString orarioFineStringa = fineAtt.getOrarioStringa();
-    wxString orarioStringaFinale = "Inizio " + orarioInizioStringa + " Fine " + orarioFineStringa;
+std::string Attivita::getOrarioStringaCompleto() {
+    std::string orarioInizioStringa = inizioAtt.toString();
+    std::string orarioFineStringa = fineAtt.toString();
+    std::string orarioStringaFinale = "Inizio " + orarioInizioStringa + " Fine " + orarioFineStringa;
     return orarioStringaFinale;
 }
 
-wxString Attivita::getStringaData()const {
-    wxString stringaData = wxString::Format(wxT("%i/%i/%i"), data.getGiorno(), data.getMese(), data.getAnno());
+std::string Attivita::getStringaData()const {
+    std::string stringaData = std::to_string(data.getGiorno()) + "/" +
+                              std::to_string(data.getMese()) + "/" +
+                              std::to_string(data.getAnno());
     return stringaData;
 }
 
