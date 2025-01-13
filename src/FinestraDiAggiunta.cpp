@@ -40,7 +40,7 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro
                                                   wxSize(-1, -1));
 
     oraFine = new wxSpinCtrl(pannelloFinestraAggiunta, wxID_ANY, "", wxPoint(275, 200), wxSize(-1, -1));
-    oraFine->SetRange(0, 23);
+    oraFine->SetRange(0, 24);//rimodifica
 
     wxStaticText *sopraminutoFine = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Minuti", wxPoint(325, 175),
                                                      wxSize(-1, -1));
@@ -56,19 +56,25 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro
 };
 //evento associato al tasto salva che prende i parametri inseriti e li aggiunge al registro
 void FinestraDiAggiunta::onBottoneSave(wxCommandEvent &evt) {
-    wxString nuovaDescrizione = testoDescrizione->GetLineText(0);
+    std::string nuovaDescrizione = (testoDescrizione->GetLineText(0)).ToStdString();
 
     for(int iter = 1; iter < (testoDescrizione->GetNumberOfLines()); iter ++ ){
-        nuovaDescrizione.Append("\n");
-        nuovaDescrizione.Append(testoDescrizione->GetLineText(iter));
+        nuovaDescrizione.append("\n");
+        nuovaDescrizione.append((testoDescrizione->GetLineText(iter)).ToStdString());
     }
-    //wxString nuovaDescrizione = testoDescrizione->GetLineText(0);
-    Orario orarioInizioAttivita(oraInizio->GetValue(), minutoInizio->GetValue());
-    Orario orarioFineAttivita(oraFine->GetValue(), minutoFine->GetValue());
-    registroAttivita->addAttivita((testoNome->GetLineText(0)).ToStdString(), dataAttivitaDaAggiungere, nuovaDescrizione,
-                                  orarioInizioAttivita, orarioFineAttivita);
-    wxMessageBox("L'attivita' salvata correttamente!", "Conferma Salvataggio", wxOK | wxICON_INFORMATION, this);
-    this->Close();
+    try {
+        Orario orarioInizioAttivita(oraInizio->GetValue(), minutoInizio->GetValue());
+        Orario orarioFineAttivita(oraFine->GetValue(), minutoFine->GetValue());
+        registroAttivita->addAttivita((testoNome->GetLineText(0)).ToStdString(), dataAttivitaDaAggiungere,
+                                      nuovaDescrizione,
+                                      orarioInizioAttivita, orarioFineAttivita);
+        wxMessageBox("L'attivita' salvata correttamente!", "Conferma Salvataggio", wxOK | wxICON_INFORMATION, this);
+        this->Close();
+    }
+    catch (const std::invalid_argument& e){
+        wxMessageBox(wxString(e.what()), "Errore", wxOK | wxICON_ERROR, this);
+    }
+
 }
 
 void FinestraDiAggiunta::onBottoneAnnulla(wxCommandEvent &evt) {

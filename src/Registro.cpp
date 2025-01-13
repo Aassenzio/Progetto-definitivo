@@ -17,7 +17,7 @@ int Registro::searchDate(GiornoDelCalendario dataCercata, std::vector<Attivita*>
 }
 
 
-void Registro::addAttivita(std::string nome, GiornoDelCalendario data, wxString descrizione, Orario inizio,
+void Registro::addAttivita(std::string nome, GiornoDelCalendario data, std::string descrizione, Orario inizio,
                            Orario fine) {
     vettoreAttivita.push_back(new Attivita(nome, data, contatoreAssoluto, descrizione, inizio,
                                            fine));

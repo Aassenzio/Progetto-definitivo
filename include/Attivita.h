@@ -4,17 +4,16 @@
 
 #include <iostream>
 #include <string>
-#include <wx/wx.h>
 #include "GiornoDelCalendario.h"
 #include "Orario.h"
 
 class Attivita {
 public:
-    Attivita(std::string nome, GiornoDelCalendario data, int ID, wxString descrizione, Orario inizio, Orario fine);
+    Attivita(std::string nome, GiornoDelCalendario data, int ID, std::string descrizione, Orario inizio, Orario fine);
 
-    void aggiungiDescrizione(wxString); //In caso di edit
+    void aggiungiDescrizione(std::string); //In caso di edit
 
-    void aggiungiNome(wxString); //In caso di edit
+    void aggiungiNome(std::string); //In caso di edit
 
     std::string getNome()const;
 

@@ -3,6 +3,7 @@
 #define PROGETTODEFINITIVO_FINESTRADIAGGIUNTA_H
 
 #include <wx/wx.h>
+#include <wx/spinctrl.h>
 #include "Registro.h"
 
 class FinestraDiAggiunta : public wxFrame {

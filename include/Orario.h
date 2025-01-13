@@ -2,7 +2,7 @@
 #ifndef PROGETTODEFINITIVO_ORARIO_H
 #define PROGETTODEFINITIVO_ORARIO_H
 #include<string>
-#include <wx/wx.h>
+#include<stdexcept>
 
 class Orario {
 public:

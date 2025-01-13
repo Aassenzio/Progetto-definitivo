@@ -1,10 +1,10 @@
 #include "Attivita.h"
 
-Attivita::Attivita(std::string nuovoNome, GiornoDelCalendario nuovaData, int ID, wxString nuovaDescrizione, Orario inizio, Orario fine) :
+Attivita::Attivita(std::string nuovoNome, GiornoDelCalendario nuovaData, int ID, std::string nuovaDescrizione, Orario inizio, Orario fine) :
         nome(nuovoNome), data(nuovaData),
         ID(ID), descrizione(nuovaDescrizione), inizioAtt(inizio), fineAtt(fine) {};
 
-void Attivita::aggiungiNome(wxString nuovoNome) {
+void Attivita::aggiungiNome(std::string nuovoNome) {
     nome = nuovoNome;
 }
 
