@@ -9,32 +9,32 @@ void Attivita::aggiungiNome(wxString nuovoNome) {
 }
 
 
-wxString Attivita::mostraNome()const {
+wxString Attivita::getNome()const {
     return nome;
 }
 
-GiornoDelCalendario Attivita::mostraData()const {
+GiornoDelCalendario Attivita::getData()const {
     return data;
 }
 
-int Attivita::mostraId()const {
+int Attivita::getId()const {
     return ID;
 }
 
-wxString Attivita::mostraDescrizione()const {
+wxString Attivita::getDescrizione()const {
     return descrizione;
 }
 
 
 
-wxString Attivita::mostraOrarioStringaCompleto() {
+wxString Attivita::getOrarioStringaCompleto() {
     wxString orarioInizioStringa = inizioAtt.getOrarioStringa();
     wxString orarioFineStringa = fineAtt.getOrarioStringa();
     wxString orarioStringaFinale = "Inizio " + orarioInizioStringa + " Fine " + orarioFineStringa;
     return orarioStringaFinale;
 }
 
-wxString Attivita::stampaData() {
+wxString Attivita::getStringaData() {
     wxString stringaData = wxString::Format(wxT("%i/%i/%i"), data.getGiorno(), data.getMese(), data.getAnno());
     return stringaData;
 }

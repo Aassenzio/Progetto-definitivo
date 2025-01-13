@@ -15,18 +15,18 @@ public:
 
     void aggiungiNome(wxString); //In caso di edit
 
-    wxString mostraNome()const;
+    wxString getNome()const;
 
 
-    wxString mostraDescrizione()const;
+    wxString getDescrizione()const;
 
-    GiornoDelCalendario mostraData()const;
+    GiornoDelCalendario getData()const;
 
-    int mostraId()const;
+    int getId()const;
 
-    wxString mostraOrarioStringaCompleto();
+    wxString getOrarioStringaCompleto();
 
-    wxString stampaData();
+    wxString getStringaData();
 
     int getNumeroRigheDescrizione();
 
