@@ -39,7 +39,7 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, Gior
         grigliaAttivita->SetCellValue(contatoreRighe, 2, wxString(contenutoRicerca[iter]->getStringaData()));
         grigliaAttivita->SetCellValue(contatoreRighe, 3, wxString(contenutoRicerca[iter]->getOrarioStringaCompleto()));
         grigliaAttivita->SetCellValue(contatoreRighe, 4, wxString(contenutoRicerca[iter]->getDescrizione()));
-        grigliaAttivita->SetRowSize(contatoreRighe, 17 * contenutoRicerca[iter]->getNumeroRigheDescrizione());
+        grigliaAttivita->SetRowSize(contatoreRighe, 20 * contenutoRicerca[iter]->getNumeroRigheDescrizione());
         contatoreRighe++;
     }
 
@@ -87,7 +87,7 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, std:
         grigliaAttivita->SetCellValue(contatoreRighe, 3,
                                       wxString(contenutoRicerca[iter]->getOrarioStringaCompleto()));
         grigliaAttivita->SetCellValue(contatoreRighe, 4, wxString(contenutoRicerca[iter]->getDescrizione()));
-        grigliaAttivita->SetRowSize(contatoreRighe, 17 * contenutoRicerca[iter]->getNumeroRigheDescrizione());
+        grigliaAttivita->SetRowSize(contatoreRighe, 20 * contenutoRicerca[iter]->getNumeroRigheDescrizione());
         contatoreRighe++;
     }
     bottoneAddAttivita = new wxButton(pannelloSecondario, wxID_ANY, "Aggiungi Attivita", wxPoint(650, 475),wxSize(100, 25));
