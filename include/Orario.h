@@ -10,6 +10,7 @@ public:
 
     std::string toString();
 
+    bool operator>(const Orario& other) const;
 
 private:
     std::string ore;

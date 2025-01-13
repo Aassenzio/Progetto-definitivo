@@ -2,7 +2,11 @@
 
 Attivita::Attivita(std::string nuovoNome, GiornoDelCalendario nuovaData, int ID, std::string nuovaDescrizione, Orario inizio, Orario fine) :
         nome(nuovoNome), data(nuovaData),
-        ID(ID), descrizione(nuovaDescrizione), inizioAtt(inizio), fineAtt(fine) {};
+        ID(ID), descrizione(nuovaDescrizione), inizioAtt(inizio), fineAtt(fine) {
+if (inizioAtt > fineAtt){
+    throw std::invalid_argument("Orario finale antecedente a quello iniziale");
+}
+};
 
 void Attivita::aggiungiNome(std::string nuovoNome) {
     nome = nuovoNome;

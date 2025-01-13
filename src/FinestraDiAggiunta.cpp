@@ -40,7 +40,7 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro
                                                   wxSize(-1, -1));
 
     oraFine = new wxSpinCtrl(pannelloFinestraAggiunta, wxID_ANY, "", wxPoint(275, 200), wxSize(-1, -1));
-    oraFine->SetRange(0, 24);//rimodifica
+    oraFine->SetRange(0, 23);
 
     wxStaticText *sopraminutoFine = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Minuti", wxPoint(325, 175),
                                                      wxSize(-1, -1));
