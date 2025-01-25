@@ -1,12 +1,14 @@
 
 #ifndef PROGETTODEFINITIVO_FINESTRAPRINCIPALE_H
 #define PROGETTODEFINITIVO_FINESTRAPRINCIPALE_H
+
 #include <ctime>
 #include <wx/wx.h>
 #include <wx/spinctrl.h>
 #include "Registro.h"
 #include "FinestraVisualizzaGriglia.h"
 #include "GiornoDelCalendario.h"
+
 class MyFrame : public wxFrame {
 public:
     MyFrame(const wxString &title);
@@ -22,8 +24,8 @@ private:
 
     Registro *registroAttivita;
     wxSpinCtrl *sceltaGiorno;
-    wxSpinCtrl *sceltaMese ;
-    wxSpinCtrl *sceltaAnno ;
+    wxSpinCtrl *sceltaMese;
+    wxSpinCtrl *sceltaAnno;
     wxButton *bottoneDiRicercaData;
     wxButton *bottoneDiRicercaNome;
     wxTextCtrl *casellaRicercaNome;

@@ -1,16 +1,17 @@
 
 #ifndef PROGETTODEFINITIVO_ORARIO_H
 #define PROGETTODEFINITIVO_ORARIO_H
+
 #include<string>
 #include<stdexcept>
 
 class Orario {
 public:
-    Orario(int oraInserita, int minutoInserito);
+    Orario(const int &oraInserita, const int &minutoInserito);
 
-    std::string toString();
+    std::string toString() const;
 
-    bool operator>(const Orario& other) const;
+    bool operator>(const Orario &other) const;
 
 private:
     std::string ore;

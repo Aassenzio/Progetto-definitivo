@@ -10,21 +10,22 @@ public:
 
     Registro();
 
-    int searchDate(GiornoDelCalendario data, std::vector<Attivita*> *listaTrovati);
+    std::vector<Attivita*> searchDate(const GiornoDelCalendario& data);
 
 
-    int searchName(std::string nome, std::vector<Attivita*> *listaTrovati);
+    std::vector<Attivita*> searchName(const std::string& nome);
 
 
-    void addAttivita(std::string nome, GiornoDelCalendario data, std::string descrizione, Orario inizio, Orario fine);
+    void addAttivita(const std::string &nome, const GiornoDelCalendario &data, const std::string &descrizione,
+                     const Orario &inizio, const Orario &fine);
 
 
-    void eliminaAttivita(int ID);
+    void eliminaAttivita(const int &ID);
 
 
 private:
-    int contatoreAssoluto ;
-    std::vector<Attivita*> vettoreAttivita;
+    int contatoreAssoluto;
+    std::vector<Attivita *> vettoreAttivita;
 };
 
 #endif //PROGETTODEFINITIVO_REGISTRO_H

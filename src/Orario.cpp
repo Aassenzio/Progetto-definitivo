@@ -1,8 +1,8 @@
 #include "Orario.h"
 
-Orario::Orario(int oraInserita, int minutoInserito) {
+Orario::Orario(const int &oraInserita, const int &minutoInserito) {
 
-    if(oraInserita > 23 || minutoInserito > 59){
+    if (oraInserita > 23 || minutoInserito > 59) {
         throw std::invalid_argument("Orario non valido");
     }
 
@@ -12,16 +12,15 @@ Orario::Orario(int oraInserita, int minutoInserito) {
 };
 
 
-std::string Orario::toString() {
+std::string Orario::toString() const {
     std::string stringaFinale = ore + ":" + minuti;
     return stringaFinale;
 }
 
-bool Orario::operator>(const Orario& other) const {
+bool Orario::operator>(const Orario &other) const {
     if (std::stoi(ore) > std::stoi(other.ore)) {
         return true;
-    }
-    else if (std::stoi(ore) == std::stoi(other.ore)) {
+    } else if (std::stoi(ore) == std::stoi(other.ore)) {
         return std::stoi(minuti) > std::stoi(other.minuti);
     }
     return false;

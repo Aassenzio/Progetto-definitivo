@@ -11,18 +11,18 @@
 
 class FrameSecondario : public wxFrame {
 public:
-    FrameSecondario(const wxString &title, Registro *, GiornoDelCalendario);
+    FrameSecondario(const wxString &title, Registro *, const GiornoDelCalendario&);
 
     FrameSecondario(const wxString &title, Registro *, std::string);
 
     void setRegister(Registro *); //in caso di edit button
 
     //funzioni dei vari bottoni dichiarate nel file .cpp
-    void onBottoneAdd(wxCommandEvent& evt);
+    void onBottoneAdd(wxCommandEvent &evt);
 
-    void onSelezioneRiga(wxGridEvent& evt);
+    void onSelezioneRiga(wxGridEvent &evt);
 
-    void onBottoneElimina(wxCommandEvent& evt);
+    void onBottoneElimina(wxCommandEvent &evt);
 
 private:
     int selezioneCorrente;

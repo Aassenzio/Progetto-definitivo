@@ -8,7 +8,8 @@
 
 class FinestraDiAggiunta : public wxFrame {
 public:
-    FinestraDiAggiunta(const wxString &title, Registro *registro, GiornoDelCalendario dataDaAggiungere, std::string nomeDaAggiungere);
+    FinestraDiAggiunta(const wxString &title, Registro *registro,const GiornoDelCalendario& dataDaAggiungere,
+                       const std::string& nomeDaAggiungere);
 
     void onBottoneSave(wxCommandEvent &evt);
 

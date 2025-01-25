@@ -9,26 +9,23 @@
 
 class Attivita {
 public:
-    Attivita(std::string nome, GiornoDelCalendario data, int ID, std::string descrizione, Orario inizio, Orario fine);
+    Attivita(const std::string &nome, const GiornoDelCalendario &data, const int &ID, const std::string &descrizione,
+             const Orario &inizio, const Orario &fine);
 
-    void aggiungiDescrizione(std::string); //In caso di edit
-
-    void aggiungiNome(std::string); //In caso di edit
-
-    std::string getNome()const;
+    std::string getNome() const;
 
 
-    std::string getDescrizione()const;
+    std::string getDescrizione() const;
 
-    GiornoDelCalendario getData()const;
+    GiornoDelCalendario getData() const;
 
-    int getId()const;
+    int getId() const;
 
-    std::string getOrarioStringaCompleto() ;
+    std::string orarioToString() const;
 
-    std::string getStringaData()const;
+    std::string dataToString() const;
 
-    int getNumeroRigheDescrizione ()const;
+    int getNumeroRigheDescrizione() const;
 
 
 private:

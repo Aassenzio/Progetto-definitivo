@@ -1,12 +1,13 @@
 #include "FinestraDiAggiunta.h"
 
-FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro, GiornoDelCalendario data, std::string nome) :
-                                      wxFrame(nullptr, wxID_ANY,title),registroAttivita(registro),
-                                      dataAttivitaDaAggiungere(data),testoNome(nullptr),testoDescrizione(nullptr),
-                                      bottoneSalvaNuovaAttivita(nullptr),pannelloFinestraAggiunta(nullptr),
-                                      oraFine(nullptr),oraInizio(nullptr),bottoneAnnulla(nullptr),minutoFine(nullptr),
-                                      minutoInizio(nullptr), sceltaAnnoAggiunta(nullptr), sceltaGiornoAggiunta(nullptr),
-                                      sceltaMeseAggiunta(nullptr), nomeDaAggiungere(nome){
+FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro,const GiornoDelCalendario& data,
+                                       const std::string& nome) :
+        wxFrame(nullptr, wxID_ANY, title), registroAttivita(registro),
+        dataAttivitaDaAggiungere(data), testoNome(nullptr), testoDescrizione(nullptr),
+        bottoneSalvaNuovaAttivita(nullptr), pannelloFinestraAggiunta(nullptr),
+        oraFine(nullptr), oraInizio(nullptr), bottoneAnnulla(nullptr), minutoFine(nullptr),
+        minutoInizio(nullptr), sceltaAnnoAggiunta(nullptr), sceltaGiornoAggiunta(nullptr),
+        sceltaMeseAggiunta(nullptr), nomeDaAggiungere(nome) {
     pannelloFinestraAggiunta = new wxPanel(this);
     wxStaticText *sopraNome = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Nome", wxPoint(50, 25),
                                                wxSize(-1, -1));
@@ -14,17 +15,17 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro
     testoNome = new wxTextCtrl(pannelloFinestraAggiunta, wxID_ANY, nomeDaAggiungere, wxPoint(50, 45), wxSize(150, 25));
     testoNome->SetMaxLength(23);
 
-    wxStaticText *sopraMese = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Mese", wxPoint(100,70));
+    wxStaticText *sopraMese = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Mese", wxPoint(100, 70));
     sceltaMeseAggiunta = new wxSpinCtrl(pannelloFinestraAggiunta, wxID_ANY, "", wxPoint(100, 90), wxSize(-1, -1));
     sceltaMeseAggiunta->SetRange(1, 12);
     sceltaMeseAggiunta->SetValue(dataAttivitaDaAggiungere.getMese());
 
-    wxStaticText *sopraGiorno = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Giorno", wxPoint(50,70));
+    wxStaticText *sopraGiorno = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Giorno", wxPoint(50, 70));
     sceltaGiornoAggiunta = new wxSpinCtrl(pannelloFinestraAggiunta, wxID_ANY, "", wxPoint(50, 90), wxSize(-1, -1));
     sceltaGiornoAggiunta->SetRange(1, 31);
     sceltaGiornoAggiunta->SetValue(dataAttivitaDaAggiungere.getGiorno());
 
-    wxStaticText *sopraAnno = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Anno", wxPoint(150,70));
+    wxStaticText *sopraAnno = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Anno", wxPoint(150, 70));
     sceltaAnnoAggiunta = new wxSpinCtrl(pannelloFinestraAggiunta, wxID_ANY, " ", wxPoint(150, 90), wxSize(80, -1));
     sceltaAnnoAggiunta->SetRange(1900, 2100);
     sceltaAnnoAggiunta->SetValue(dataAttivitaDaAggiungere.getAnno());
@@ -33,9 +34,10 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro
     wxStaticText *sopraDescrizione = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Descrizione",
                                                       wxPoint(50, 125), wxSize(-1, -1));
     testoDescrizione = new wxTextCtrl(pannelloFinestraAggiunta, wxID_ANY, "Inserisci qui la descrizione",
-                                          wxPoint(50, 150), wxSize(170, 170) ,wxTE_MULTILINE );
+                                      wxPoint(50, 150), wxSize(170, 170), wxTE_MULTILINE);
 
-    bottoneSalvaNuovaAttivita = new wxButton(pannelloFinestraAggiunta, wxID_ANY, "Salva", wxPoint(350, 305), wxSize(70, 25));
+    bottoneSalvaNuovaAttivita = new wxButton(pannelloFinestraAggiunta, wxID_ANY, "Salva", wxPoint(350, 305),
+                                             wxSize(70, 25));
     bottoneAnnulla = new wxButton(pannelloFinestraAggiunta, wxID_ANY, "Annulla", wxPoint(275, 305), wxSize(70, 25));
 
     wxStaticText *sopraInizio = new wxStaticText(pannelloFinestraAggiunta, wxID_ANY, "Orario inizio:", wxPoint(275, 75),
@@ -74,11 +76,12 @@ FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro
     sceltaGiornoAggiunta->Bind(wxEVT_SPINCTRL, &FinestraDiAggiunta::onModificaDataDiAggiunta, this);
 
 };
+
 //evento associato al tasto salva che prende i parametri inseriti e li aggiunge al registro
 void FinestraDiAggiunta::onBottoneSave(wxCommandEvent &evt) {
     std::string nuovaDescrizione = (testoDescrizione->GetLineText(0)).ToStdString();
 
-    for(int iter = 1; iter < (testoDescrizione->GetNumberOfLines()); iter ++ ){
+    for (int iter = 1; iter < (testoDescrizione->GetNumberOfLines()); iter++) {
         nuovaDescrizione.append("\n");
         nuovaDescrizione.append((testoDescrizione->GetLineText(iter)).ToStdString());
     }
@@ -93,7 +96,7 @@ void FinestraDiAggiunta::onBottoneSave(wxCommandEvent &evt) {
         wxMessageBox("L'attivita' salvata correttamente!", "Conferma Salvataggio", wxOK | wxICON_INFORMATION, this);
         this->Close();
     }
-    catch (const std::invalid_argument& e){
+    catch (const std::invalid_argument &e) {
         wxMessageBox(wxString(e.what()), "Errore", wxOK | wxICON_ERROR, this);
     }
 
@@ -102,6 +105,7 @@ void FinestraDiAggiunta::onBottoneSave(wxCommandEvent &evt) {
 void FinestraDiAggiunta::onBottoneAnnulla(wxCommandEvent &evt) {
     this->Close();
 }
+
 //funzione che controlla dinamicamente che l'orario inserito di fine attivita non sia antecendente all'orario di inizio
 void FinestraDiAggiunta::onCambioOra(wxCommandEvent &evt) {
     oraFine->SetRange(oraInizio->GetValue(), 23);

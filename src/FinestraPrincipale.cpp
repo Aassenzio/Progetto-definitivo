@@ -5,21 +5,23 @@
 #include <wx/file.h>
 #include "FinestraPrincipale.h"
 
-MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) , registroAttivita(nullptr), sceltaGiorno(nullptr),
-                                          sceltaMese(nullptr), sceltaAnno(nullptr), bottoneDiRicercaData(nullptr), pannello(nullptr),
+MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title), registroAttivita(nullptr),
+                                          sceltaGiorno(nullptr),
+                                          sceltaMese(nullptr), sceltaAnno(nullptr), bottoneDiRicercaData(nullptr),
+                                          pannello(nullptr),
                                           testoSopraAnno(nullptr), testoSopraGiorno(nullptr), testoSopraMese(nullptr),
-                                          bottoneDiRicercaNome(nullptr), casellaRicercaNome(nullptr){
+                                          bottoneDiRicercaNome(nullptr), casellaRicercaNome(nullptr) {
 
     pannello = new wxPanel(this);
 
     registroAttivita = new Registro;
 
     testoDiBenvenuto = new wxStaticText(pannello, wxID_ANY,
-                                                      "Seleziona il giorno di cui vuoi visualizzare le attivita",
-                                                      wxPoint(50, 20), wxSize(-1, -1));
+                                        "Seleziona il giorno di cui vuoi visualizzare le attivita",
+                                        wxPoint(50, 20), wxSize(-1, -1));
     //leggo la data odierna per impostare il default
     std::time_t t = std::time(nullptr);
-    std::tm* now = std::localtime(&t);
+    std::tm *now = std::localtime(&t);
     int todayGiorno = now->tm_mday;
     int todayMese = now->tm_mon + 1;
     int todayAnno = now->tm_year + 1900;
@@ -48,16 +50,16 @@ MyFrame::MyFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) , re
 
 
     bottoneDiRicercaNome = new wxButton(pannello, wxID_ANY, "Cerca Nome", wxPoint(250, 125), wxSize(-1, -1));
-    casellaRicercaNome = new wxTextCtrl(pannello, wxID_ANY, "Nome", wxPoint(50,125),wxSize(150, 25));
+    casellaRicercaNome = new wxTextCtrl(pannello, wxID_ANY, "Nome", wxPoint(50, 125), wxSize(150, 25));
 
-    bottoneDiRicercaNome->Bind(wxEVT_BUTTON, &MyFrame::onButtonSearchNameClick,this);
+    bottoneDiRicercaNome->Bind(wxEVT_BUTTON, &MyFrame::onButtonSearchNameClick, this);
 
     testoSopraMese = new wxStaticText(pannello, wxID_ANY, "Mese",
-                                                    wxPoint(100, 50), wxSize(-1, -1));
+                                      wxPoint(100, 50), wxSize(-1, -1));
     testoSopraGiorno = new wxStaticText(pannello, wxID_ANY, "Giorno",
-                                                      wxPoint(50, 50), wxSize(-1, -1));
+                                        wxPoint(50, 50), wxSize(-1, -1));
     testoSopraAnno = new wxStaticText(pannello, wxID_ANY, "Anno",
-                                                    wxPoint(150, 50), wxSize(-1, -1));
+                                      wxPoint(150, 50), wxSize(-1, -1));
 
     //evento di controllo data collegato
     sceltaAnno->Bind(wxEVT_SPINCTRL, &MyFrame::onModificaData, this);
@@ -76,28 +78,29 @@ void MyFrame::onButtonSearchDateClick(wxCommandEvent &evt) {
         secondaFinestra->Center();
         secondaFinestra->Show();
     }
-    catch (const std::invalid_argument& e){
+    catch (const std::invalid_argument &e) {
         wxMessageBox(wxString(e.what()), "Errore", wxOK | wxICON_ERROR, this);
     };
 }
 
-void MyFrame::onButtonSearchNameClick(wxCommandEvent &evt){
+void MyFrame::onButtonSearchNameClick(wxCommandEvent &evt) {
     std::string nomeDiRicerca;
     try {
         nomeDiRicerca = casellaRicercaNome->GetLineText(0).ToStdString();
-        if(nomeDiRicerca == ""){
-            throw std::invalid_argument ("Inserisci il nome che vuoi cercare");
+        if (nomeDiRicerca == "") {
+            throw std::invalid_argument("Inserisci il nome che vuoi cercare");
         }
         FrameSecondario *secondaFinestra = new FrameSecondario("Elenco attivita", registroAttivita, nomeDiRicerca);
         secondaFinestra->SetClientSize(800, 600);
         secondaFinestra->Center();
         secondaFinestra->Show();
     }
-    catch (const std::invalid_argument& e){
+    catch (const std::invalid_argument &e) {
         wxMessageBox(wxString(e.what()), "Errore", wxOK | wxICON_ERROR, this);
     }
 
 }
+
 //evento di controllo data
 void MyFrame::onModificaData(wxCommandEvent &evt) {
     int meseSelezionato = sceltaMese->GetValue();
