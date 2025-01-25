@@ -7,11 +7,13 @@
 
 class Orario {
 public:
-    Orario(const int &oraInserita, const int &minutoInserito);
+    Orario(int oraInserita, int minutoInserito);
 
     std::string toString() const;
 
     bool operator>(const Orario &other) const;
+
+    bool operator==(const Orario &other) const;
 
 private:
     std::string ore;

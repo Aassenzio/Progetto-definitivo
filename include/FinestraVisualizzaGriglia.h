@@ -11,7 +11,7 @@
 
 class FrameSecondario : public wxFrame {
 public:
-    FrameSecondario(const wxString &title, Registro *, const GiornoDelCalendario&);
+    FrameSecondario(const wxString &title, Registro *, const GiornoDelCalendario &);
 
     FrameSecondario(const wxString &title, Registro *, std::string);
 

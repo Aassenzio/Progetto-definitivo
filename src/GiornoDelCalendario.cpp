@@ -1,7 +1,7 @@
 #include "GiornoDelCalendario.h"
 
-GiornoDelCalendario::GiornoDelCalendario(const int &giorno, const int &mese, const int &anno) : giorno(giorno),
-                                                                                                mese(mese), anno(anno) {
+GiornoDelCalendario::GiornoDelCalendario(int giorno, int mese, int anno) : giorno(giorno),
+                                                                           mese(mese), anno(anno) {
 
     if (giorno > 31 || mese > 12) {
         throw std::invalid_argument("Giorno o mese invalido");

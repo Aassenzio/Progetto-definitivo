@@ -9,7 +9,7 @@
 
 class Attivita {
 public:
-    Attivita(const std::string &nome, const GiornoDelCalendario &data, const int &ID, const std::string &descrizione,
+    Attivita(const std::string &nome, const GiornoDelCalendario &data, int ID, const std::string &descrizione,
              const Orario &inizio, const Orario &fine);
 
     std::string getNome() const;
@@ -21,11 +21,13 @@ public:
 
     int getId() const;
 
-    std::string orarioToString() const;
+    std::string toStringOrario() const;
 
-    std::string dataToString() const;
+    std::string toStringData() const;
 
-    int getNumeroRigheDescrizione() const;
+    int getRigheDescrizione() const;
+
+    bool operator==(const Attivita& other) const;
 
 
 private:

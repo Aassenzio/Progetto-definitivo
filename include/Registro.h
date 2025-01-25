@@ -10,17 +10,17 @@ public:
 
     Registro();
 
-    std::vector<Attivita*> searchDate(const GiornoDelCalendario& data);
+    std::vector<Attivita *> searchDate(const GiornoDelCalendario &data);
 
 
-    std::vector<Attivita*> searchName(const std::string& nome);
+    std::vector<Attivita *> searchName(const std::string &nome);
 
 
     void addAttivita(const std::string &nome, const GiornoDelCalendario &data, const std::string &descrizione,
                      const Orario &inizio, const Orario &fine);
 
 
-    void eliminaAttivita(const int &ID);
+    void eliminaAttivita(int ID);
 
 
 private:

@@ -1,7 +1,7 @@
 #include "FinestraDiAggiunta.h"
 
-FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro,const GiornoDelCalendario& data,
-                                       const std::string& nome) :
+FinestraDiAggiunta::FinestraDiAggiunta(const wxString &title, Registro *registro, const GiornoDelCalendario &data,
+                                       const std::string &nome) :
         wxFrame(nullptr, wxID_ANY, title), registroAttivita(registro),
         dataAttivitaDaAggiungere(data), testoNome(nullptr), testoDescrizione(nullptr),
         bottoneSalvaNuovaAttivita(nullptr), pannelloFinestraAggiunta(nullptr),

@@ -6,7 +6,7 @@
 
 class GiornoDelCalendario {
 public:
-    GiornoDelCalendario(const int &giorno, const int &mese, const int &anno);
+    GiornoDelCalendario(int giorno, int mese, int anno);
 
     int getGiorno() const;
 

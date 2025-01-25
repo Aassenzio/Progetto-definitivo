@@ -1,6 +1,6 @@
 #include "Attivita.h"
 
-Attivita::Attivita(const std::string &nuovoNome, const GiornoDelCalendario &nuovaData, const int &ID,
+Attivita::Attivita(const std::string &nuovoNome, const GiornoDelCalendario &nuovaData, int ID,
                    const std::string &nuovaDescrizione, const Orario &inizio, const Orario &fine) :
         nome(nuovoNome), data(nuovaData),
         ID(ID), descrizione(nuovaDescrizione), inizioAtt(inizio), fineAtt(fine) {
@@ -27,21 +27,21 @@ std::string Attivita::getDescrizione() const {
 }
 
 
-std::string Attivita::orarioToString() const {
+std::string Attivita::toStringOrario() const {
     std::string orarioInizioStringa = inizioAtt.toString();
     std::string orarioFineStringa = fineAtt.toString();
     std::string orarioStringaFinale = "Inizio " + orarioInizioStringa + " Fine " + orarioFineStringa;
     return orarioStringaFinale;
 }
 
-std::string Attivita::dataToString() const {
+std::string Attivita::toStringData() const {
     std::string stringaData = std::to_string(data.getGiorno()) + "/" +
                               std::to_string(data.getMese()) + "/" +
                               std::to_string(data.getAnno());
     return stringaData;
 }
 
-int Attivita::getNumeroRigheDescrizione() const {
+int Attivita::getRigheDescrizione() const {
     int contatoreLinee = 1;
     for (size_t iter = 0; iter < descrizione.length(); ++iter) {
         if (descrizione[iter] == '\n') {
@@ -50,3 +50,12 @@ int Attivita::getNumeroRigheDescrizione() const {
     }
     return contatoreLinee;
 }
+
+bool Attivita::operator==(const Attivita& other)const {
+    return nome == other.nome &&
+           data == other.data &&
+           ID == other.ID &&
+           descrizione == other.descrizione &&
+           inizioAtt == other.inizioAtt &&
+           fineAtt == other.fineAtt;
+};

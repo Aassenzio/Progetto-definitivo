@@ -1,7 +1,8 @@
 #include "FinestraVisualizzaGriglia.h"
 
 
-FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, const GiornoDelCalendario &data) : wxFrame(nullptr,wxID_ANY,title),
+FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, const GiornoDelCalendario &data) : wxFrame(
+        nullptr, wxID_ANY, title),
                                                                                                                registroAttivita(
                                                                                                                        registro),
                                                                                                                dataDiRicerca(
@@ -43,10 +44,10 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, cons
         grigliaAttivita->SetCellValue(contatoreRighe, 0,
                                       wxString::Format(wxT("%i"), contenutoRicerca[iter]->getId()));
         grigliaAttivita->SetCellValue(contatoreRighe, 1, wxString(contenutoRicerca[iter]->getNome()));
-        grigliaAttivita->SetCellValue(contatoreRighe, 2, wxString(contenutoRicerca[iter]->dataToString()));
-        grigliaAttivita->SetCellValue(contatoreRighe, 3, wxString(contenutoRicerca[iter]->orarioToString()));
+        grigliaAttivita->SetCellValue(contatoreRighe, 2, wxString(contenutoRicerca[iter]->toStringData()));
+        grigliaAttivita->SetCellValue(contatoreRighe, 3, wxString(contenutoRicerca[iter]->toStringOrario()));
         grigliaAttivita->SetCellValue(contatoreRighe, 4, wxString(contenutoRicerca[iter]->getDescrizione()));
-        grigliaAttivita->SetRowSize(contatoreRighe, 20 * contenutoRicerca[iter]->getNumeroRigheDescrizione());
+        grigliaAttivita->SetRowSize(contatoreRighe, 20 * contenutoRicerca[iter]->getRigheDescrizione());
         contatoreRighe++;
     }
 
@@ -103,11 +104,11 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, std:
         grigliaAttivita->SetCellValue(contatoreRighe, 0,
                                       wxString::Format(wxT("%i"), contenutoRicerca[iter]->getId()));
         grigliaAttivita->SetCellValue(contatoreRighe, 1, wxString(contenutoRicerca[iter]->getNome()));
-        grigliaAttivita->SetCellValue(contatoreRighe, 2, wxString(contenutoRicerca[iter]->dataToString()));
+        grigliaAttivita->SetCellValue(contatoreRighe, 2, wxString(contenutoRicerca[iter]->toStringData()));
         grigliaAttivita->SetCellValue(contatoreRighe, 3,
-                                      wxString(contenutoRicerca[iter]->orarioToString()));
+                                      wxString(contenutoRicerca[iter]->toStringOrario()));
         grigliaAttivita->SetCellValue(contatoreRighe, 4, wxString(contenutoRicerca[iter]->getDescrizione()));
-        grigliaAttivita->SetRowSize(contatoreRighe, 20 * contenutoRicerca[iter]->getNumeroRigheDescrizione());
+        grigliaAttivita->SetRowSize(contatoreRighe, 20 * contenutoRicerca[iter]->getRigheDescrizione());
         contatoreRighe++;
     }
     bottoneAddAttivita = new wxButton(pannelloSecondario, wxID_ANY, "Aggiungi Attivita", wxPoint(650, 475),

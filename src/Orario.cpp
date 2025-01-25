@@ -1,6 +1,6 @@
 #include "Orario.h"
 
-Orario::Orario(const int &oraInserita, const int &minutoInserito) {
+Orario::Orario(int oraInserita, int minutoInserito) {
 
     if (oraInserita > 23 || minutoInserito > 59) {
         throw std::invalid_argument("Orario non valido");
@@ -24,4 +24,11 @@ bool Orario::operator>(const Orario &other) const {
         return std::stoi(minuti) > std::stoi(other.minuti);
     }
     return false;
+}
+
+bool Orario::operator==(const Orario &other) const{
+    if (ore == other.ore && minuti == other.minuti) {
+        return true;
+    }else
+        return false;
 }

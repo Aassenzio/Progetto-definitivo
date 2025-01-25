@@ -5,7 +5,6 @@ file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false *.h *.cpp)
 set(SOURCES ${TEST_SOURCES})
 
 add_executable(${BINARY} ${TEST_SOURCES}
-        testComparaDataTrue.cpp
         ../include/Orario.h
         ../include/FinestraPrincipale.h
         ../include/App.h
@@ -14,13 +13,11 @@ add_executable(${BINARY} ${TEST_SOURCES}
         ../include/FinestraVisualizzaGriglia.h
         ../include/FinestraDiAggiunta.h
         ../include/GiornoDelCalendario.h
-        testComparaData.cpp
-        testBisestile.cpp
-        testBisestile.cpp
-        testCercaNome.cpp
-        testCercaNome2.cpp
+        testGiornoDelCalendario.cpp
+        testGiornoDelCalendario.cpp
         testOrario.cpp
-        testCercaData.cpp
+        testRegistro.cpp
+        testAttivita.cpp
 
 )
 
