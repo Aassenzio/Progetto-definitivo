@@ -11,9 +11,9 @@
 
 class FrameSecondario : public wxFrame {
 public:
-    FrameSecondario(const wxString &title, Registro *, const GiornoDelCalendario &);
+    FrameSecondario(const wxString &title, Registro *registro, const GiornoDelCalendario &dataDiRicerca);
 
-    FrameSecondario(const wxString &title, Registro *, std::string);
+    FrameSecondario(const wxString &title, Registro *registro, const std::string &nome);
 
     void setRegister(Registro *); //in caso di edit button
 

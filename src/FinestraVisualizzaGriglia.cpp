@@ -62,7 +62,7 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, cons
     bottoneEliminaAttivita->Bind(wxEVT_BUTTON, &FrameSecondario::onBottoneElimina, this);
 }
 
-FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, std::string nome) : wxFrame(nullptr,
+FrameSecondario::FrameSecondario(const wxString &title, Registro *registro,const std::string &nome) : wxFrame(nullptr,
                                                                                                         wxID_ANY,
                                                                                                         title),
                                                                                                 registroAttivita(
