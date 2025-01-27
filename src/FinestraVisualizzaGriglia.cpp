@@ -62,23 +62,26 @@ FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, cons
     bottoneEliminaAttivita->Bind(wxEVT_BUTTON, &FrameSecondario::onBottoneElimina, this);
 }
 
-FrameSecondario::FrameSecondario(const wxString &title, Registro *registro,const std::string &nome) : wxFrame(nullptr,
-                                                                                                        wxID_ANY,
-                                                                                                        title),
-                                                                                                registroAttivita(
-                                                                                                        registro),
-                                                                                                dataDiRicerca(1, 1,
-                                                                                                              2025),
-                                                                                                selezioneCorrente(0),
-                                                                                                grigliaAttivita(
-                                                                                                        nullptr),
-                                                                                                bottoneAddAttivita(
-                                                                                                        nullptr),
-                                                                                                bottoneEliminaAttivita(
-                                                                                                        nullptr),
-                                                                                                pannelloSecondario(
-                                                                                                        nullptr),
-                                                                                                nomeDiRicerca(nome) {
+FrameSecondario::FrameSecondario(const wxString &title, Registro *registro, const std::string &nome) : wxFrame(nullptr,
+                                                                                                               wxID_ANY,
+                                                                                                               title),
+                                                                                                       registroAttivita(
+                                                                                                               registro),
+                                                                                                       dataDiRicerca(1,
+                                                                                                                     1,
+                                                                                                                     2025),
+                                                                                                       selezioneCorrente(
+                                                                                                               0),
+                                                                                                       grigliaAttivita(
+                                                                                                               nullptr),
+                                                                                                       bottoneAddAttivita(
+                                                                                                               nullptr),
+                                                                                                       bottoneEliminaAttivita(
+                                                                                                               nullptr),
+                                                                                                       pannelloSecondario(
+                                                                                                               nullptr),
+                                                                                                       nomeDiRicerca(
+                                                                                                               nome) {
     pannelloSecondario = new wxPanel(this);
     //griglia con i vari campi delle attivita
     grigliaAttivita = new wxGrid(pannelloSecondario, wxID_ANY, wxPoint(25, 25), wxSize(700, 400));

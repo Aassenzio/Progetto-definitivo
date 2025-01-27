@@ -26,9 +26,9 @@ bool Orario::operator>(const Orario &other) const {
     return false;
 }
 
-bool Orario::operator==(const Orario &other) const{
+bool Orario::operator==(const Orario &other) const {
     if (ore == other.ore && minuti == other.minuti) {
         return true;
-    }else
+    } else
         return false;
 }

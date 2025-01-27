@@ -27,7 +27,7 @@ public:
 
     int getRigheDescrizione() const;
 
-    bool operator==(const Attivita& other) const;
+    bool operator==(const Attivita &other) const;
 
 
 private:

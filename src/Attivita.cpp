@@ -51,7 +51,7 @@ int Attivita::getRigheDescrizione() const {
     return contatoreLinee;
 }
 
-bool Attivita::operator==(const Attivita& other)const {
+bool Attivita::operator==(const Attivita &other) const {
     return nome == other.nome &&
            data == other.data &&
            ID == other.ID &&
